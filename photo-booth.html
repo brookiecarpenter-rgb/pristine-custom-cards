@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nashville Photo Booth Rental | Golden Hour Photo Booth by Pristine</title>
+<meta name="description" content="Luxury photo booth rental in Nashville, TN. Wedding photo booth, 360 booth, glam booth & corporate activations. Golden Hour Photo Booth — a Pristine Custom Cards division.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:#080808; --deep:#0d0d0d; --border:rgba(255,255,255,0.08);
+  --border-bright:rgba(255,255,255,0.18); --text:#e8e4dc; --muted:#7a766e;
+  --gold:#c9a84c; --gold-light:#e8c97a; --holo-1:#7dd3e8; --holo-2:#c084fc;
+  --holo-3:#fb923c; --white:#f5f1eb;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --mono:'DM Mono',monospace; --display:'Bebas Neue',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--text);font-family:var(--serif);font-size:18px;line-height:1.6;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.4;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;background:rgba(8,8,8,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-logo{display:flex;align-items:center;text-decoration:none;}
+.nav-logo img{height:40px;width:auto;display:block;object-fit:contain;filter:brightness(1.05);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.25s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold-light);}
+.nav-cta{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--black)!important;background:var(--gold);padding:0.55rem 1.25rem;border-radius:2px;text-decoration:none;transition:background 0.25s;}
+.nav-cta:hover{background:var(--gold-light);}
+.btn-primary{display:inline-flex;align-items:center;gap:0.5rem;background:var(--gold);color:var(--black);font-family:var(--mono);font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;padding:1rem 2rem;border:none;border-radius:2px;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.2s,box-shadow 0.2s;}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,0.25);}
+.btn-ghost{display:inline-flex;align-items:center;gap:0.5rem;background:transparent;color:var(--text);font-family:var(--mono);font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;padding:1rem 2rem;border:1px solid var(--border-bright);border-radius:2px;cursor:pointer;text-decoration:none;transition:border-color 0.2s,color 0.2s;}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold-light);}
+
+/* HERO — teal/purple tint for photo booth */
+.page-hero{min-height:80vh;display:flex;align-items:flex-end;padding:10rem 3rem 5rem;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 70% 30%,rgba(125,211,232,0.06) 0%,transparent 70%),radial-gradient(ellipse 50% 50% at 20% 70%,rgba(192,132,252,0.04) 0%,transparent 60%);}
+.hero-inner{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.breadcrumb{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;display:flex;gap:0.75rem;align-items:center;}
+.breadcrumb a{color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.breadcrumb a:hover{color:var(--gold);}
+.division-badge{display:inline-flex;align-items:center;gap:0.6rem;border:1px solid rgba(125,211,232,0.25);border-radius:20px;padding:0.3rem 0.85rem 0.3rem 0.5rem;margin-bottom:1.5rem;}
+.division-dot{width:6px;height:6px;border-radius:50%;background:var(--holo-1);}
+.division-label{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--holo-1);}
+h1{font-family:var(--display);font-size:clamp(3rem,7vw,5.5rem);line-height:0.95;letter-spacing:0.03em;color:var(--white);margin-bottom:1.5rem;}
+h1 .teal{background:linear-gradient(90deg,var(--holo-1),var(--holo-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-desc{font-size:1.05rem;color:var(--muted);line-height:1.75;max-width:440px;margin-bottom:2rem;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+
+/* booth visual */
+.booth-hero-visual{position:relative;height:460px;}
+.booth-frame{width:100%;height:100%;border-radius:16px;border:1px solid var(--border-bright);overflow:hidden;background:linear-gradient(160deg,#0a1520 0%,#0e0a20 50%,#0a1520 100%);position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:1.75rem;}
+.booth-frame::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 50% 30%,rgba(125,211,232,0.1) 0%,transparent 70%);}
+.booth-orb{position:absolute;border-radius:50%;filter:blur(50px);pointer-events:none;}
+.orb-t{width:180px;height:180px;background:rgba(125,211,232,0.1);top:5%;right:10%;}
+.orb-p{width:130px;height:130px;background:rgba(192,132,252,0.08);bottom:25%;left:5%;}
+.booth-ring{width:150px;height:150px;border-radius:50%;border:1px solid rgba(125,211,232,0.2);position:absolute;top:50%;left:50%;transform:translate(-50%,-55%);display:flex;align-items:center;justify-content:center;}
+.booth-ring-inner{width:110px;height:110px;border-radius:50%;border:1px solid rgba(192,132,252,0.15);display:flex;align-items:center;justify-content:center;font-size:2.5rem;}
+.booth-wordmark{font-family:var(--display);font-size:0.8rem;letter-spacing:0.35em;color:rgba(125,211,232,0.5);text-align:center;position:absolute;top:calc(50% - 55px - 30px);left:50%;transform:translate(-50%,-100%);white-space:nowrap;}
+.booth-stats{display:flex;gap:1rem;position:relative;}
+.booth-stat{flex:1;background:rgba(8,8,8,0.75);backdrop-filter:blur(10px);border:1px solid var(--border-bright);border-radius:8px;padding:0.85rem;}
+.booth-stat-label{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--holo-1);margin-bottom:0.15rem;}
+.booth-stat-val{font-family:var(--display);font-size:1.2rem;letter-spacing:0.08em;color:var(--white);}
+
+/* BOOTH TYPES */
+.booth-types{padding:6rem 3rem;background:var(--deep);}
+.booth-types-inner{max-width:1200px;margin:0 auto;}
+.booth-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5px;margin-top:3.5rem;background:var(--border);}
+.booth-card{background:var(--deep);padding:3rem;position:relative;overflow:hidden;transition:background 0.3s;}
+.booth-card:hover{background:#161616;}
+.booth-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:0;transition:opacity 0.3s;}
+.booth-card:nth-child(1)::before{background:linear-gradient(90deg,var(--holo-1),var(--holo-2));}
+.booth-card:nth-child(2)::before{background:linear-gradient(90deg,var(--holo-2),var(--holo-3));}
+.booth-card:nth-child(3)::before{background:linear-gradient(90deg,var(--gold),var(--holo-1));}
+.booth-card:nth-child(4)::before{background:linear-gradient(90deg,var(--holo-3),var(--gold));}
+.booth-card:hover::before{opacity:1;}
+.booth-card-num{font-family:var(--display);font-size:5rem;color:rgba(255,255,255,0.04);line-height:1;position:absolute;top:1.5rem;right:1.75rem;letter-spacing:0.04em;}
+.booth-card-icon{font-size:2rem;margin-bottom:1.25rem;display:block;}
+.booth-card-title{font-family:var(--display);font-size:1.8rem;letter-spacing:0.06em;color:var(--white);margin-bottom:0.5rem;}
+.booth-card-sub{font-family:var(--serif);font-style:italic;font-size:0.9rem;color:var(--gold);margin-bottom:1.25rem;}
+.booth-card-desc{font-size:0.9rem;color:var(--muted);line-height:1.75;margin-bottom:1.75rem;}
+.booth-card-features{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin-bottom:2rem;}
+.booth-card-features li{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.1em;color:var(--muted);display:flex;align-items:center;gap:0.6rem;}
+.booth-card-features li::before{content:'◆';color:var(--holo-1);font-size:0.45rem;}
+
+/* WHAT'S INCLUDED */
+.included{padding:6rem 3rem;max-width:1200px;margin:0 auto;}
+.included-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;margin-top:3.5rem;background:var(--border);}
+.included-item{background:var(--black);padding:2rem 1.75rem;}
+.included-icon{font-size:1.5rem;margin-bottom:1rem;display:block;}
+.included-title{font-family:var(--display);font-size:1rem;letter-spacing:0.08em;color:var(--white);margin-bottom:0.5rem;}
+.included-desc{font-size:0.85rem;color:var(--muted);line-height:1.65;}
+
+/* PACKAGES */
+.packages{background:var(--deep);padding:6rem 3rem;border-top:1px solid var(--border);}
+.packages-inner{max-width:1200px;margin:0 auto;}
+.packages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;margin-top:3.5rem;background:var(--border);}
+.package-card{background:var(--deep);padding:2.5rem;position:relative;transition:background 0.3s;}
+.package-card:hover{background:#161616;}
+.package-card.featured{background:#111111;border-top:2px solid var(--holo-1);}
+.package-featured-badge{position:absolute;top:-1px;left:50%;transform:translate(-50%,-100%);font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--black);background:var(--holo-1);padding:0.3rem 0.85rem;border-radius:20px 20px 0 0;white-space:nowrap;}
+.pkg-tier{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
+.pkg-name{font-family:var(--display);font-size:1.8rem;letter-spacing:0.06em;color:var(--white);margin-bottom:1.25rem;}
+.pkg-price{font-family:var(--display);font-size:3rem;letter-spacing:0.02em;color:var(--white);line-height:1;margin-bottom:0.25rem;}
+.pkg-price sup{font-family:var(--mono);font-size:1rem;vertical-align:super;}
+.pkg-note{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;color:var(--muted);margin-bottom:2rem;}
+.pkg-features{list-style:none;display:flex;flex-direction:column;gap:0.7rem;margin-bottom:2.25rem;}
+.pkg-features li{font-size:0.9rem;color:var(--muted);display:flex;align-items:flex-start;gap:0.6rem;}
+.pkg-features li::before{content:'◆';color:var(--holo-1);font-size:0.45rem;flex-shrink:0;margin-top:0.45rem;}
+.pkg-features li.included-in-all{color:rgba(125,211,232,0.6);}
+.add-ons{margin-top:3rem;padding:2rem;border:1px solid var(--border);border-radius:4px;}
+.add-ons-title{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;}
+.add-ons-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.add-on{font-size:0.88rem;color:var(--muted);}
+.add-on strong{display:block;font-family:var(--mono);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text);font-weight:400;margin-bottom:0.2rem;}
+
+/* SERVICE AREAS */
+.service-areas{background:var(--black);padding:5rem 3rem;border-top:1px solid var(--border);}
+.areas-inner{max-width:1200px;margin:0 auto;}
+.areas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;margin-top:3rem;background:var(--border);}
+.area-card{background:var(--black);padding:1.75rem 2rem;display:flex;flex-direction:column;gap:0.25rem;transition:background 0.25s;}
+.area-card:hover{background:#0d0d0d;}
+.area-name{font-family:var(--display);font-size:1.2rem;letter-spacing:0.06em;color:var(--white);}
+.area-state{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);}
+.area-note{font-family:var(--serif);font-style:italic;font-size:0.82rem;color:var(--gold);margin-top:0.25rem;}
+
+/* REVIEWS */
+.reviews{background:var(--deep);padding:6rem 3rem;border-top:1px solid var(--border);}
+.reviews-inner{max-width:1200px;margin:0 auto;}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;margin-top:3.5rem;background:var(--border);}
+.review-card{background:var(--deep);padding:2.25rem;display:flex;flex-direction:column;gap:1rem;}
+.review-stars{color:var(--gold);font-size:0.85rem;letter-spacing:0.1em;}
+.review-text{font-size:0.95rem;color:var(--text);line-height:1.75;font-style:italic;flex:1;}
+.review-author{padding-top:1rem;border-top:1px solid var(--border);}
+.review-name{font-family:var(--mono);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--white);display:block;margin-bottom:0.15rem;}
+.review-event{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;color:var(--muted);}
+
+/* CTA */
+.cta-strip{padding:6rem 3rem;text-align:center;position:relative;overflow:hidden;}
+.cta-strip::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(125,211,232,0.04) 0%,transparent 70%);}
+.cta-inner{position:relative;max-width:700px;margin:0 auto;}
+.cta-strip h2{font-family:var(--display);font-size:clamp(2.5rem,5vw,4.5rem);line-height:0.95;letter-spacing:0.04em;color:var(--white);margin-bottom:1.25rem;}
+.cta-teal{background:linear-gradient(90deg,var(--holo-1),var(--holo-2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.cta-strip p{font-size:0.95rem;color:var(--muted);max-width:440px;margin:0 auto 2.5rem;line-height:1.75;}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+
+footer{background:var(--black);border-top:1px solid var(--border);padding:2.5rem 3rem;}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;}
+.footer-brand{font-family:var(--display);font-size:1.2rem;letter-spacing:0.1em;color:var(--white);text-decoration:none;}
+.footer-brand span{color:var(--gold);}
+.footer-links{display:flex;gap:2rem;list-style:none;}
+.footer-links a{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--gold-light);}
+.footer-copy{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--muted);}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;} .nav-links{display:none;}
+  .hero-inner{grid-template-columns:1fr;gap:3rem;} .booth-hero-visual{height:320px;}
+  .booth-grid{grid-template-columns:1fr;}
+  .included-grid{grid-template-columns:1fr 1fr;}
+  .packages-grid{grid-template-columns:1fr;}
+  .areas-grid{grid-template-columns:1fr 1fr;}
+  .reviews-grid{grid-template-columns:1fr;}
+  .page-hero{padding:8rem 1.5rem 4rem;}
+  .booth-types,.included,.packages,.service-areas,.reviews{padding:4rem 1.5rem;}
+  .add-ons-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:600px){
+  .included-grid,.areas-grid,.add-ons-grid{grid-template-columns:1fr;}
+  .hero-actions,.cta-actions{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="images/pristine-logo.png" alt="Pristine Custom Cards"></a>
+  <ul class="nav-links">
+    <li><a href="custom-cards.html">Custom Cards</a></li>
+    <li><a href="photo-booth.html" class="active">Photo Booth</a></li>
+    <li><a href="book-now.html">Events</a></li>
+    <li><a href="book-now.html">Gallery</a></li>
+  </ul>
+  <a href="book-now.html" class="nav-cta">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span style="color:rgba(255,255,255,0.18);">→</span>
+        <span>Photo Booth</span>
+      </div>
+      <img src="images/golden-hour-logo.png" alt="Golden Hour Photo Booth" style="height:80px;width:auto;object-fit:contain;display:block;margin-bottom:1rem;">
+      <h1>GOLDEN<br>HOUR<br><span class="teal">PHOTO BOOTH.</span></h1>
+      <p class="hero-desc">Nashville's luxury photo booth rental. Not a generic setup — a full visual activation. Cinematic lighting, custom backdrops, and instant-print quality your guests will actually want to keep.</p>
+      <div class="hero-actions">
+        <a href="book-now.html" class="btn-primary">Check Availability →</a>
+        <a href="#booth-types" class="btn-ghost">See Booth Types</a>
+      </div>
+    </div>
+    <div class="booth-hero-visual">
+      <div class="booth-frame">
+        <div class="orb-t booth-orb"></div>
+        <div class="orb-p booth-orb"></div>
+        <div class="booth-wordmark">GOLDEN HOUR</div>
+        <div class="booth-ring">
+          <div class="booth-ring-inner">📸</div>
+        </div>
+        <div class="booth-stats">
+          <div class="booth-stat">
+            <div class="booth-stat-label">Booth Types</div>
+            <div class="booth-stat-val">4 Styles</div>
+          </div>
+          <div class="booth-stat">
+            <div class="booth-stat-label">Cities</div>
+            <div class="booth-stat-val">9 Areas</div>
+          </div>
+          <div class="booth-stat">
+            <div class="booth-stat-label">Response</div>
+            <div class="booth-stat-val">24 Hours</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BOOTH TYPES -->
+<div class="booth-types" id="booth-types">
+  <div class="booth-types-inner">
+    <p style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;">Booth Styles</p>
+    <h2 style="font-family:var(--display);font-size:clamp(2.5rem,5vw,3.5rem);line-height:1;letter-spacing:0.04em;color:var(--white);">FOUR WAYS TO<br><span style="font-family:var(--serif);font-style:italic;font-weight:300;color:var(--muted);">make it memorable.</span></h2>
+    <div class="booth-grid">
+
+      <div class="booth-card">
+        <span class="booth-card-num">01</span>
+        <span class="booth-card-icon">🌀</span>
+        <div class="booth-card-title">360° VIDEO BOOTH</div>
+        <div class="booth-card-sub">Full-rotation slow-motion video</div>
+        <p class="booth-card-desc">Guests step onto the platform, the arm rotates around them, and they walk away with a cinematic slow-motion video they'll post within minutes. This is the booth that makes the internet stop scrolling.</p>
+        <ul class="booth-card-features">
+          <li>Slow-motion 360° video capture</li>
+          <li>Custom branded overlay & music</li>
+          <li>Instant digital delivery via QR</li>
+          <li>LED platform lighting included</li>
+          <li>Attendant-operated for seamless flow</li>
+        </ul>
+        <a href="book-now.html" class="btn-primary">Book 360 Booth →</a>
+      </div>
+
+      <div class="booth-card">
+        <span class="booth-card-num">02</span>
+        <span class="booth-card-icon">✨</span>
+        <div class="booth-card-title">GLAM BOOTH</div>
+        <div class="booth-card-sub">Luxury soft-box portrait experience</div>
+        <p class="booth-card-desc">Studio-quality soft-box lighting, beauty filter, custom backdrop, and instant prints that look like a real photographer took them. Designed for weddings, galas, and any event where your guests expect elevated everything.</p>
+        <ul class="booth-card-features">
+          <li>Professional soft-box lighting rig</li>
+          <li>Beauty & glow filter options</li>
+          <li>Instant 4×6 prints with overlay</li>
+          <li>Digital copies via text/email</li>
+          <li>Custom backdrop selection</li>
+        </ul>
+        <a href="book-now.html" class="btn-primary">Book Glam Booth →</a>
+      </div>
+
+      <div class="booth-card">
+        <span class="booth-card-num">03</span>
+        <span class="booth-card-icon">🎯</span>
+        <div class="booth-card-title">ROAMING BOOTH</div>
+        <div class="booth-card-sub">We come to your guests</div>
+        <p class="booth-card-desc">No booth, no line. Our photographer-operator roams your event capturing candid and posed shots, delivering prints or digital files in real time. Perfect for large venues, cocktail hours, and VIP moments that can't be missed.</p>
+        <ul class="booth-card-features">
+          <li>Mobile setup — no fixed station</li>
+          <li>Candid + posed shot mix</li>
+          <li>Instant printed strips on-site</li>
+          <li>Ideal for 200+ guest events</li>
+          <li>Pairs perfectly with 360 booth</li>
+        </ul>
+        <a href="book-now.html" class="btn-primary">Book Roaming Booth →</a>
+      </div>
+
+      <div class="booth-card">
+        <span class="booth-card-num">04</span>
+        <span class="booth-card-icon">🃏</span>
+        <div class="booth-card-title">CARD + BOOTH COMBO</div>
+        <div class="booth-card-sub">The Pristine signature experience</div>
+        <p class="booth-card-desc">Our most booked package — and the one no one else offers. Live custom trading card printing and a luxury photo booth in one activation. Guests get a printed photo strip AND a collectible trading card of themselves. Unforgettable.</p>
+        <ul class="booth-card-features">
+          <li>Golden Hour photo booth included</li>
+          <li>Live Pristine card printing station</li>
+          <li>Custom card design for your event</li>
+          <li>Bundled pricing (save vs. separate)</li>
+          <li>One team, one setup, one bill</li>
+        </ul>
+        <a href="book-now.html" class="btn-primary">Book the Combo →</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- WHAT'S INCLUDED -->
+<div class="included">
+  <p style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;">Every Booking Includes</p>
+  <h2 style="font-family:var(--display);font-size:clamp(2rem,4vw,3rem);line-height:1;letter-spacing:0.04em;color:var(--white);">NOTHING <span style="font-family:var(--serif);font-style:italic;font-weight:300;color:var(--muted);">left out.</span></h2>
+  <div class="included-grid">
+    <div class="included-item">
+      <span class="included-icon">🎨</span>
+      <div class="included-title">CUSTOM OVERLAY</div>
+      <p class="included-desc">Personalized design with your event name, date, and branding. Delivered before the event for your approval.</p>
+    </div>
+    <div class="included-item">
+      <span class="included-icon">🖨️</span>
+      <div class="included-title">INSTANT PRINTS</div>
+      <p class="included-desc">On-site photo printing. Guests walk away with a physical print within seconds. Studio-quality finish.</p>
+    </div>
+    <div class="included-item">
+      <span class="included-icon">📱</span>
+      <div class="included-title">DIGITAL GALLERY</div>
+      <p class="included-desc">All photos and videos uploaded to a private gallery. Guests access via QR code — no app required.</p>
+    </div>
+    <div class="included-item">
+      <span class="included-icon">👤</span>
+      <div class="included-title">STAFFED OPERATION</div>
+      <p class="included-desc">A Pristine team member operates your booth all night. You focus on your event — we handle everything.</p>
+    </div>
+    <div class="included-item">
+      <span class="included-icon">🚚</span>
+      <div class="included-title">DELIVERY & SETUP</div>
+      <p class="included-desc">We deliver, build, and break down. No truck rentals, no carrying equipment. Just tell us where to go.</p>
+    </div>
+    <div class="included-item">
+      <span class="included-icon">📦</span>
+      <div class="included-title">UNLIMITED SESSIONS</div>
+      <p class="included-desc">No per-photo charges. As many sessions as your guests want during the rental window.</p>
+    </div>
+    <div class="included-item">
+      <span class="included-icon">🎭</span>
+      <div class="included-title">PROP SELECTION</div>
+      <p class="included-desc">Curated prop box included with every booking. Event-appropriate and on-brand for your vibe.</p>
+    </div>
+    <div class="included-item">
+      <span class="included-icon">⭐</span>
+      <div class="included-title">POST-EVENT RECAP</div>
+      <p class="included-desc">Full event gallery and highlight reel delivered within 48 hours. Ready to share, post, and relive.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PACKAGES -->
+<div class="packages" id="packages">
+  <div class="packages-inner">
+    <p style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;">Packages</p>
+    <h2 style="font-family:var(--display);font-size:clamp(2.5rem,5vw,3.5rem);line-height:1;letter-spacing:0.04em;color:var(--white);">PICK YOUR <span style="font-family:var(--serif);font-style:italic;font-weight:300;color:var(--muted);">package.</span></h2>
+    <div class="packages-grid">
+
+      <div class="package-card">
+        <div class="pkg-tier">Essential</div>
+        <div class="pkg-name">THE GOLDEN</div>
+        <div class="pkg-price"><sup>$</sup>599</div>
+        <div class="pkg-note">3 hours · glam or roaming booth</div>
+        <ul class="pkg-features">
+          <li>3 hours of booth coverage</li>
+          <li>Glam booth or roaming option</li>
+          <li>Custom event overlay</li>
+          <li>Unlimited sessions</li>
+          <li>Instant prints included</li>
+          <li>Digital gallery delivery</li>
+          <li>1 Pristine team member</li>
+        </ul>
+        <a href="book-now.html" class="btn-ghost" style="width:100%;justify-content:center;">Get a Quote →</a>
+      </div>
+
+      <div class="package-card featured">
+        <div class="package-featured-badge">Most Booked</div>
+        <div class="pkg-tier">Signature</div>
+        <div class="pkg-name">THE HOUR</div>
+        <div class="pkg-price"><sup>$</sup>899</div>
+        <div class="pkg-note">4 hours · 360 or glam booth</div>
+        <ul class="pkg-features">
+          <li>4 hours of booth coverage</li>
+          <li>360° video or glam booth</li>
+          <li>Custom branded overlay + backdrop</li>
+          <li>Unlimited sessions</li>
+          <li>Instant prints + digital gallery</li>
+          <li>Social sharing station</li>
+          <li>2 Pristine team members</li>
+          <li class="included-in-all">Prop box included</li>
+        </ul>
+        <a href="book-now.html" class="btn-primary" style="width:100%;justify-content:center;">Book This Package →</a>
+      </div>
+
+      <div class="package-card">
+        <div class="pkg-tier">Ultimate</div>
+        <div class="pkg-name">THE PRISTINE</div>
+        <div class="pkg-price" style="font-size:2rem;letter-spacing:0.04em;margin:1.25rem 0 0.25rem;">CUSTOM</div>
+        <div class="pkg-note">Full-day · 360 + glam + card printing</div>
+        <ul class="pkg-features">
+          <li>Full event coverage (up to 8 hours)</li>
+          <li>360 booth + glam booth + roaming</li>
+          <li>Live custom card printing station</li>
+          <li>Full branded activation build-out</li>
+          <li>Dedicated 3-person Pristine team</li>
+          <li>VIP guest experience management</li>
+          <li>Custom post-event highlight reel</li>
+        </ul>
+        <a href="book-now.html" class="btn-ghost" style="width:100%;justify-content:center;">Request Custom Quote →</a>
+      </div>
+
+    </div>
+
+    <div class="add-ons">
+      <div class="add-ons-title">Add-ons available for any package</div>
+      <div class="add-ons-grid">
+        <div class="add-on"><strong>Custom Card Printing</strong>Live trading card station added to any booth package</div>
+        <div class="add-on"><strong>Extra Hour</strong>Extend your booking on the day if the party's still going</div>
+        <div class="add-on"><strong>Custom Backdrop</strong>Fully bespoke backdrop designed for your event</div>
+        <div class="add-on"><strong>Guest Book</strong>Physical print album — guests sign and add their strip</div>
+        <div class="add-on"><strong>Video Highlight Reel</strong>Edited recap video delivered within 48 hours</div>
+        <div class="add-on"><strong>Travel Coverage</strong>Events outside our standard service area</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICE AREAS -->
+<div class="service-areas">
+  <div class="areas-inner">
+    <p style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;">Where We Go</p>
+    <h2 style="font-family:var(--display);font-size:clamp(2rem,4vw,3rem);line-height:1;letter-spacing:0.04em;color:var(--white);margin-bottom:3rem;">SERVICE <span style="font-family:var(--serif);font-style:italic;font-weight:300;color:var(--muted);">areas.</span></h2>
+    <div class="areas-grid">
+      <div class="area-card">
+        <div class="area-name">NASHVILLE</div>
+        <div class="area-state">Tennessee · Primary Market</div>
+        <div class="area-note">Our home base — no travel fee</div>
+      </div>
+      <div class="area-card">
+        <div class="area-name">FRANKLIN</div>
+        <div class="area-state">Tennessee</div>
+        <div class="area-note">No travel fee</div>
+      </div>
+      <div class="area-card">
+        <div class="area-name">BRENTWOOD</div>
+        <div class="area-state">Tennessee</div>
+        <div class="area-note">No travel fee</div>
+      </div>
+      <div class="area-card">
+        <div class="area-name">HENDERSONVILLE</div>
+        <div class="area-state">Tennessee</div>
+        <div class="area-note">No travel fee</div>
+      </div>
+      <div class="area-card">
+        <div class="area-name">MURFREESBORO</div>
+        <div class="area-state">Tennessee</div>
+        <div class="area-note">Small travel fee may apply</div>
+      </div>
+      <div class="area-card">
+        <div class="area-name">CLARKSVILLE</div>
+        <div class="area-state">Tennessee</div>
+        <div class="area-note">Small travel fee may apply</div>
+      </div>
+      <div class="area-card">
+        <div class="area-name">BOWLING GREEN</div>
+        <div class="area-state">Kentucky</div>
+        <div class="area-note">Travel fee applies</div>
+      </div>
+      <div class="area-card">
+        <div class="area-name">LOUISVILLE</div>
+        <div class="area-state">Kentucky</div>
+        <div class="area-note">Travel fee applies</div>
+      </div>
+      <div class="area-card">
+        <div class="area-name">LEXINGTON</div>
+        <div class="area-state">Kentucky</div>
+        <div class="area-note">Travel fee applies</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<div class="reviews">
+  <div class="reviews-inner">
+    <p style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;">Reviews</p>
+    <h2 style="font-family:var(--display);font-size:clamp(2rem,4vw,3rem);line-height:1;letter-spacing:0.04em;color:var(--white);margin-bottom:0;">WHAT GUESTS <span style="font-family:var(--serif);font-style:italic;font-weight:300;color:var(--muted);">remember.</span></h2>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"The 360 booth at our Nashville wedding was insane. Every single person at the reception made a video. Our guests still text us clips from it. Worth every penny and then some."</p>
+        <div class="review-author">
+          <span class="review-name">Jamie & Chris M.</span>
+          <span class="review-event">360 Booth · Wedding · Nashville, TN</span>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"We booked the full Pristine combo — 360 booth and live card printing. Our corporate team conference hasn't stopped talking about it. The cards alone were a hit. This team is elite."</p>
+        <div class="review-author">
+          <span class="review-name">Danielle R.</span>
+          <span class="review-event">Combo Package · Corporate · Brentwood, TN</span>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">"Golden Hour is not your typical photo booth vendor. The glam booth lighting made everyone look incredible. Setup was flawless, the team was professional, and the prints were gorgeous."</p>
+        <div class="review-author">
+          <span class="review-name">Tasha W.</span>
+          <span class="review-event">Glam Booth · Gala · Franklin, TN</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <div class="cta-inner">
+    <p style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;">Get Started</p>
+    <h2>YOUR EVENT<br>DESERVES<br><span class="cta-teal">GOLDEN HOUR.</span></h2>
+    <p>Tell us your event date, city, and guest count. We'll respond within 24 hours with availability and a custom quote.</p>
+    <div class="cta-actions">
+      <a href="book-now.html" class="btn-primary">Check Availability →</a>
+      <a href="custom-cards.html" class="btn-ghost">See Custom Cards →</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-brand">PRISTINE<span>.</span></a>
+    <ul class="footer-links">
+      <li><a href="custom-cards.html">Custom Cards</a></li>
+      <li><a href="photo-booth.html">Photo Booth</a></li>
+      <li><a href="book-now.html">Book Now</a></li>
+    </ul>
+    <span class="footer-copy">© 2025 Pristine Custom Cards · Nashville, TN</span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Custom Trading Cards Nashville | Pristine Custom Cards</title>
+<meta name="description" content="Premium custom trading cards in Nashville, TN. Holographic foil, anime-style, wedding cards, festival cards & live event printing. Order yours today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:#080808; --deep:#0d0d0d; --border:rgba(255,255,255,0.08);
+  --border-bright:rgba(255,255,255,0.18); --text:#e8e4dc; --muted:#7a766e;
+  --gold:#c9a84c; --gold-light:#e8c97a; --holo-1:#7dd3e8; --holo-2:#c084fc;
+  --holo-3:#fb923c; --white:#f5f1eb;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --mono:'DM Mono',monospace; --display:'Bebas Neue',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--text);font-family:var(--serif);font-size:18px;line-height:1.6;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.4;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.25rem 3rem;background:rgba(8,8,8,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-logo{display:flex;align-items:center;text-decoration:none;}
+.nav-logo img{height:40px;width:auto;display:block;object-fit:contain;filter:brightness(1.05);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.25s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold-light);}
+.nav-cta{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--black)!important;background:var(--gold);padding:0.55rem 1.25rem;border-radius:2px;text-decoration:none;transition:background 0.25s;}
+.nav-cta:hover{background:var(--gold-light);}
+
+/* PAGE HERO */
+.page-hero{padding:10rem 3rem 5rem;position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
+.page-hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(201,168,76,0.05) 0%,transparent 70%),radial-gradient(ellipse 40% 60% at 10% 30%,rgba(125,211,232,0.03) 0%,transparent 60%);}
+.breadcrumb{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;display:flex;gap:0.75rem;align-items:center;}
+.breadcrumb a{color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.breadcrumb a:hover{color:var(--gold);}
+.breadcrumb-sep{color:var(--border-bright);}
+.page-hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.page-hero h1{font-family:var(--display);font-size:clamp(3.5rem,7vw,6rem);line-height:0.95;letter-spacing:0.03em;color:var(--white);margin-bottom:1.5rem;}
+.page-hero h1 .grad{background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 50%,var(--holo-1) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.page-hero-desc{font-size:1.05rem;color:var(--muted);line-height:1.75;max-width:440px;margin-bottom:2rem;}
+.page-hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+
+/* card showcase */
+.card-showcase{position:relative;height:420px;display:flex;align-items:center;justify-content:center;}
+.showcase-card{position:absolute;width:200px;height:280px;border-radius:14px;border:1px solid rgba(255,255,255,0.12);overflow:hidden;transition:transform 0.4s ease;}
+.showcase-card:nth-child(1){transform:rotate(-12deg) translate(-90px,20px);background:linear-gradient(135deg,#0d1a0d,#1a2e0d);}
+.showcase-card:nth-child(2){transform:rotate(-5deg) translate(-40px,-10px);background:linear-gradient(135deg,#160d1a,#2a1040);z-index:2;}
+.showcase-card:nth-child(3){transform:rotate(3deg) translate(20px,15px);background:linear-gradient(135deg,#1a1209,#2d1f08);z-index:3;}
+.showcase-card:nth-child(4){transform:rotate(10deg) translate(80px,-5px);background:linear-gradient(135deg,#0d1a1a,#0a2020);}
+.showcase-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 0%,rgba(201,168,76,0.12) 30%,transparent 50%,rgba(125,211,232,0.08) 70%,transparent 100%);}
+.showcase-card::after{content:'PRISTINE';position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);font-family:var(--display);font-size:0.75rem;letter-spacing:0.3em;color:rgba(201,168,76,0.5);}
+.showcase-card:nth-child(1)::after{content:'FESTIVAL';color:rgba(125,211,232,0.5);}
+.showcase-card:nth-child(2)::after{content:'HOLOGRAPHIC';color:rgba(192,132,252,0.5);}
+.showcase-card:nth-child(4)::after{content:'WEDDING';color:rgba(201,168,76,0.4);}
+.card-showcase:hover .showcase-card:nth-child(1){transform:rotate(-18deg) translate(-110px,30px);}
+.card-showcase:hover .showcase-card:nth-child(2){transform:rotate(-8deg) translate(-55px,-20px);}
+.card-showcase:hover .showcase-card:nth-child(3){transform:rotate(5deg) translate(30px,20px);}
+.card-showcase:hover .showcase-card:nth-child(4){transform:rotate(16deg) translate(100px,-10px);}
+
+/* FILTER NAV */
+.filter-nav{background:var(--deep);border-bottom:1px solid var(--border);padding:0 3rem;position:sticky;top:74px;z-index:90;}
+.filter-inner{max-width:1200px;margin:0 auto;display:flex;gap:0;overflow-x:auto;}
+.filter-btn{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);padding:1.1rem 1.75rem;border:none;background:transparent;cursor:pointer;border-bottom:2px solid transparent;transition:color 0.2s,border-color 0.2s;white-space:nowrap;}
+.filter-btn:hover{color:var(--text);}
+.filter-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+
+/* CARD TYPES DETAIL */
+.cards-section{padding:5rem 3rem;max-width:1200px;margin:0 auto;}
+.card-type-block{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;padding:5rem 0;border-bottom:1px solid var(--border);}
+.card-type-block:last-child{border-bottom:none;}
+.card-type-block.reverse{direction:rtl;}
+.card-type-block.reverse > *{direction:ltr;}
+
+.card-type-label{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.card-type-title{font-family:var(--display);font-size:clamp(2rem,4vw,3rem);line-height:1;letter-spacing:0.04em;color:var(--white);margin-bottom:1rem;}
+.card-type-desc{font-size:1rem;color:var(--muted);line-height:1.8;margin-bottom:2rem;}
+.card-type-specs{display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2.5rem;}
+.spec-row{display:flex;align-items:baseline;gap:1rem;font-size:0.88rem;}
+.spec-key{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);min-width:100px;flex-shrink:0;}
+.spec-val{color:var(--text);}
+
+/* card visual mockups */
+.card-visual{aspect-ratio:3/4;border-radius:16px;border:1px solid var(--border-bright);position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:1.5rem;}
+.card-visual.holo{background:linear-gradient(135deg,#0a0a12 0%,#12082a 30%,#0a1a1a 60%,#120808 100%);}
+.card-visual.holo::before{content:'';position:absolute;inset:0;background:linear-gradient(125deg,transparent 0%,rgba(125,211,232,0.3) 20%,rgba(192,132,252,0.25) 40%,transparent 55%,rgba(251,146,60,0.2) 75%,rgba(125,211,232,0.15) 90%);mix-blend-mode:screen;}
+.card-visual.holo::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,0.015) 2px,rgba(255,255,255,0.015) 4px);}
+.card-visual.anime{background:linear-gradient(160deg,#0a0515 0%,#1a0530 50%,#0a0515 100%);}
+.card-visual.anime::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(192,132,252,0.2) 0%,transparent 70%);}
+.card-visual.wedding{background:linear-gradient(160deg,#151209 0%,#2a2010 50%,#151209 100%);}
+.card-visual.wedding::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(201,168,76,0.18) 0%,transparent 70%);}
+.card-visual.sports{background:linear-gradient(160deg,#0d1520 0%,#0a2040 50%,#0d1520 100%);}
+.card-visual.sports::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(125,211,232,0.15) 0%,transparent 70%);}
+.card-visual.corporate{background:linear-gradient(160deg,#0d0d0d 0%,#1a1a1a 50%,#0d0d0d 100%);}
+.card-visual.corporate::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(201,168,76,0.1) 0%,transparent 70%);}
+.card-visual.festival{background:linear-gradient(160deg,#1a0808 0%,#2a1005 50%,#1a0808 100%);}
+.card-visual.festival::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(251,146,60,0.18) 0%,transparent 70%);}
+
+.card-badge{background:rgba(8,8,8,0.75);backdrop-filter:blur(10px);border:1px solid var(--border-bright);border-radius:8px;padding:0.85rem 1rem;width:100%;}
+.card-badge-type{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.2rem;}
+.card-badge-name{font-family:var(--display);font-size:1.1rem;letter-spacing:0.08em;color:var(--white);}
+
+/* PRICING */
+.pricing{background:var(--deep);padding:6rem 3rem;border-top:1px solid var(--border);}
+.pricing-inner{max-width:1200px;margin:0 auto;}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;margin-top:3.5rem;background:var(--border);}
+.pricing-card{background:var(--deep);padding:2.5rem;position:relative;transition:background 0.3s;}
+.pricing-card:hover{background:#161616;}
+.pricing-card.featured{background:#111111;}
+.pricing-card.featured::before{content:'Most Popular';position:absolute;top:0;left:50%;transform:translate(-50%,-50%);font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0.3rem 0.85rem;border-radius:20px;white-space:nowrap;}
+.pricing-tier{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem;}
+.pricing-name{font-family:var(--display);font-size:1.8rem;letter-spacing:0.06em;color:var(--white);margin-bottom:0.25rem;}
+.pricing-price{font-family:var(--display);font-size:3rem;letter-spacing:0.02em;color:var(--white);line-height:1;margin:1.25rem 0 0.25rem;}
+.pricing-price sup{font-family:var(--mono);font-size:1rem;vertical-align:super;}
+.pricing-note{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;color:var(--muted);margin-bottom:2rem;}
+.pricing-features{list-style:none;display:flex;flex-direction:column;gap:0.7rem;margin-bottom:2.25rem;}
+.pricing-features li{font-size:0.9rem;color:var(--muted);display:flex;align-items:flex-start;gap:0.6rem;}
+.pricing-features li::before{content:'◆';color:var(--gold);font-size:0.5rem;flex-shrink:0;margin-top:0.35rem;}
+
+/* PROCESS */
+.process{padding:6rem 3rem;max-width:1200px;margin:0 auto;}
+.process-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:3.5rem;position:relative;}
+.process-steps::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--border-bright) 20%,var(--border-bright) 80%,transparent);}
+.process-step{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 1rem;}
+.step-circle{width:56px;height:56px;border-radius:50%;border:1px solid var(--border-bright);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;background:var(--black);position:relative;z-index:1;font-family:var(--display);font-size:1.2rem;letter-spacing:0.05em;color:var(--gold);}
+.step-label{font-family:var(--display);font-size:0.9rem;letter-spacing:0.08em;color:var(--white);margin-bottom:0.4rem;}
+.step-desc{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.08em;color:var(--muted);line-height:1.6;}
+
+/* FAQ */
+.faq{background:var(--deep);padding:6rem 3rem;border-top:1px solid var(--border);}
+.faq-inner{max-width:800px;margin:0 auto;}
+.faq-list{margin-top:3rem;display:flex;flex-direction:column;gap:1.5px;background:var(--border);}
+.faq-item{background:var(--deep);}
+.faq-q{width:100%;background:none;border:none;color:var(--text);font-family:var(--serif);font-size:1.05rem;padding:1.5rem 1.75rem;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:color 0.2s;}
+.faq-q:hover{color:var(--gold-light);}
+.faq-icon{font-family:var(--mono);font-size:1.2rem;color:var(--gold);flex-shrink:0;transition:transform 0.3s;}
+.faq-a{font-size:0.95rem;color:var(--muted);line-height:1.75;padding:0 1.75rem 1.5rem;display:none;}
+.faq-item.open .faq-a{display:block;}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+
+/* CTA STRIP */
+.cta-strip{background:var(--black);padding:5rem 3rem;text-align:center;border-top:1px solid var(--border);}
+.cta-strip h2{font-family:var(--display);font-size:clamp(2.5rem,5vw,4rem);letter-spacing:0.04em;color:var(--white);margin-bottom:1rem;line-height:1;}
+.cta-strip p{font-size:0.95rem;color:var(--muted);max-width:400px;margin:0 auto 2rem;line-height:1.75;}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+
+/* FOOTER */
+footer{background:var(--black);border-top:1px solid var(--border);padding:2.5rem 3rem;}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;}
+.footer-brand{font-family:var(--display);font-size:1.2rem;letter-spacing:0.1em;color:var(--white);text-decoration:none;}
+.footer-brand span{color:var(--gold);}
+.footer-links{display:flex;gap:2rem;list-style:none;}
+.footer-links a{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--gold-light);}
+.footer-copy{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:var(--muted);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;} .nav-links{display:none;}
+  .page-hero-inner{grid-template-columns:1fr;gap:3rem;} .card-showcase{height:280px;}
+  .card-type-block,.card-type-block.reverse{grid-template-columns:1fr;direction:ltr;gap:2.5rem;}
+  .pricing-grid{grid-template-columns:1fr;}
+  .process-steps{grid-template-columns:1fr 1fr;gap:2rem;} .process-steps::before{display:none;}
+  .cards-section,.process,.faq-inner{padding:4rem 1.5rem;}
+  .pricing,.faq{padding:4rem 1.5rem;}
+  .page-hero{padding:8rem 1.5rem 4rem;}
+  .filter-nav{padding:0 1.5rem;}
+}
+@media(max-width:600px){
+  .pricing-grid{grid-template-columns:1fr;}
+  .process-steps{grid-template-columns:1fr;}
+  .footer-inner{flex-direction:column;align-items:flex-start;}
+  .footer-links{flex-wrap:wrap;gap:1rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="images/pristine-logo.png" alt="Pristine Custom Cards"></a>
+  <ul class="nav-links">
+    <li><a href="custom-cards.html" class="active">Custom Cards</a></li>
+    <li><a href="photo-booth.html">Photo Booth</a></li>
+    <li><a href="book-now.html">Events</a></li>
+    <li><a href="book-now.html">Gallery</a></li>
+  </ul>
+  <a href="book-now.html" class="nav-cta">Book Now</a>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-sep">→</span>
+        <span>Custom Cards</span>
+      </div>
+      <h1>CUSTOM<br>TRADING<br><span class="grad">CARDS.</span></h1>
+      <p class="page-hero-desc">Studio-quality custom trading cards printed on-site at your event or shipped directly to you. Holographic foil, anime-style art, wedding keepsakes, corporate editions, and more. Your guests leave as legends.</p>
+      <div class="page-hero-actions">
+        <a href="book-now.html" class="btn-primary">Order Your Cards →</a>
+        <a href="#types" class="btn-ghost">See All Styles</a>
+      </div>
+    </div>
+    <div class="card-showcase">
+      <div class="showcase-card"></div>
+      <div class="showcase-card"></div>
+      <div class="showcase-card"></div>
+      <div class="showcase-card"></div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER NAV -->
+<div class="filter-nav" id="types">
+  <div class="filter-inner">
+    <button class="filter-btn active" onclick="setFilter(this,'all')">All Styles</button>
+    <button class="filter-btn" onclick="setFilter(this,'holo')">Holographic</button>
+    <button class="filter-btn" onclick="setFilter(this,'anime')">Anime</button>
+    <button class="filter-btn" onclick="setFilter(this,'wedding')">Wedding</button>
+    <button class="filter-btn" onclick="setFilter(this,'sports')">Sports</button>
+    <button class="filter-btn" onclick="setFilter(this,'corporate')">Corporate</button>
+    <button class="filter-btn" onclick="setFilter(this,'festival')">Festival</button>
+  </div>
+</div>
+
+<!-- CARD TYPES -->
+<div class="cards-section">
+
+  <!-- Holographic -->
+  <div class="card-type-block" data-type="holo">
+    <div>
+      <div class="card-type-label">01 — Most Popular</div>
+      <h2 class="card-type-title">HOLOGRAPHIC<br>FOIL CARDS</h2>
+      <p class="card-type-desc">Rainbow prismatic foil that shifts and shimmers in the light. Our most-requested card type at conventions, festivals, and weddings. The moment guests pull one from the sleeve, they stop and stare. There's nothing like holding a card that looks different from every angle.</p>
+      <div class="card-type-specs">
+        <div class="spec-row"><span class="spec-key">Card Stock</span><span class="spec-val">350gsm premium with holographic laminate</span></div>
+        <div class="spec-row"><span class="spec-key">Print Time</span><span class="spec-val">3–5 minutes per card at live events</span></div>
+        <div class="spec-row"><span class="spec-key">Min. Order</span><span class="spec-val">1 card (live) · 25 cards (shipped)</span></div>
+        <div class="spec-row"><span class="spec-key">Best For</span><span class="spec-val">Conventions, festivals, weddings, VIP gifts</span></div>
+      </div>
+      <a href="book-now.html" class="btn-primary">Order Holographic Cards →</a>
+    </div>
+    <div class="card-visual holo">
+      <div class="card-badge">
+        <div class="card-badge-type">Holographic Foil</div>
+        <div class="card-badge-name">PRISMATIC EDITION</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Anime -->
+  <div class="card-type-block reverse" data-type="anime">
+    <div>
+      <div class="card-type-label">02 — Fan Favorite</div>
+      <h2 class="card-type-title">ANIME<br>STYLE CARDS</h2>
+      <p class="card-type-desc">Custom illustrated cards in classic anime and manga art style. Perfect for conventions, cosplay events, fan meetups, and gaming nights. We transform your photo into a hand-drawn-style character card with custom stats, type attributes, and full card framing.</p>
+      <div class="card-type-specs">
+        <div class="spec-row"><span class="spec-key">Art Style</span><span class="spec-val">Anime / manga illustration overlay</span></div>
+        <div class="spec-row"><span class="spec-key">Custom Stats</span><span class="spec-val">Name, title, attack, defense, special</span></div>
+        <div class="spec-row"><span class="spec-key">Finish</span><span class="spec-val">Matte or glossy with optional foil</span></div>
+        <div class="spec-row"><span class="spec-key">Best For</span><span class="spec-val">Anime cons, gaming events, cosplay</span></div>
+      </div>
+      <a href="book-now.html" class="btn-primary">Order Anime Cards →</a>
+    </div>
+    <div class="card-visual anime">
+      <div class="card-badge">
+        <div class="card-badge-type">Anime Style</div>
+        <div class="card-badge-name">CHARACTER CARD</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wedding -->
+  <div class="card-type-block" data-type="wedding">
+    <div>
+      <div class="card-type-label">03 — Most Unique Favor</div>
+      <h2 class="card-type-title">WEDDING<br>CARDS</h2>
+      <p class="card-type-desc">The wedding favor that never ends up in a drawer. Custom photo trading cards of the couple — printed live at the reception or pre-ordered and shipped to arrive before the big day. Guests actually keep these. We've had couples tell us guests still have them framed years later.</p>
+      <div class="card-type-specs">
+        <div class="spec-row"><span class="spec-key">Personalization</span><span class="spec-val">Names, date, venue, custom vows excerpt</span></div>
+        <div class="spec-row"><span class="spec-key">Delivery</span><span class="spec-val">Live printing at venue or pre-shipped</span></div>
+        <div class="spec-row"><span class="spec-key">Packaging</span><span class="spec-val">Individual sleeves + gift box options</span></div>
+        <div class="spec-row"><span class="spec-key">Best For</span><span class="spec-val">Wedding favors, engagement parties, anniversaries</span></div>
+      </div>
+      <a href="book-now.html" class="btn-primary">Order Wedding Cards →</a>
+    </div>
+    <div class="card-visual wedding">
+      <div class="card-badge">
+        <div class="card-badge-type">Wedding Edition</div>
+        <div class="card-badge-name">FOREVER CARD</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sports -->
+  <div class="card-type-block reverse" data-type="sports">
+    <div>
+      <div class="card-type-label">04 — Team Favorite</div>
+      <h2 class="card-type-title">SPORTS<br>CARDS</h2>
+      <p class="card-type-desc">Classic sports card layout — action photo, stats panel, team colors, position, and season. Perfect for athlete recognition events, youth sports leagues, team celebrations, and sports banquets. Every player goes home feeling like a pro.</p>
+      <div class="card-type-specs">
+        <div class="spec-row"><span class="spec-key">Layout</span><span class="spec-val">Classic sports card format with stats</span></div>
+        <div class="spec-row"><span class="spec-key">Custom Fields</span><span class="spec-val">Name, number, position, team, stats</span></div>
+        <div class="spec-row"><span class="spec-key">Team Branding</span><span class="spec-val">Custom colors, logo placement</span></div>
+        <div class="spec-row"><span class="spec-key">Best For</span><span class="spec-val">Youth leagues, sports banquets, team photos</span></div>
+      </div>
+      <a href="book-now.html" class="btn-primary">Order Sports Cards →</a>
+    </div>
+    <div class="card-visual sports">
+      <div class="card-badge">
+        <div class="card-badge-type">Sports Edition</div>
+        <div class="card-badge-name">PLAYER CARD</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Corporate -->
+  <div class="card-type-block" data-type="corporate">
+    <div>
+      <div class="card-type-label">05 — Corporate Events</div>
+      <h2 class="card-type-title">CORPORATE<br>CARDS</h2>
+      <p class="card-type-desc">Branded employee trading cards for conferences, team-building events, and company milestones. Your team as collectibles. We've seen these used as conference badges, onboarding kits, and icebreakers that actually work. Nothing gets people talking like their own card.</p>
+      <div class="card-type-specs">
+        <div class="spec-row"><span class="spec-key">Branding</span><span class="spec-val">Full company brand integration</span></div>
+        <div class="spec-row"><span class="spec-key">Custom Fields</span><span class="spec-val">Name, title, department, fun stat</span></div>
+        <div class="spec-row"><span class="spec-key">Quantity</span><span class="spec-val">10 – 10,000+ cards</span></div>
+        <div class="spec-row"><span class="spec-key">Best For</span><span class="spec-val">Conferences, team builds, onboarding</span></div>
+      </div>
+      <a href="book-now.html" class="btn-primary">Order Corporate Cards →</a>
+    </div>
+    <div class="card-visual corporate">
+      <div class="card-badge">
+        <div class="card-badge-type">Corporate Edition</div>
+        <div class="card-badge-name">TEAM CARD</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Festival -->
+  <div class="card-type-block reverse" data-type="festival">
+    <div>
+      <div class="card-type-label">06 — High Volume</div>
+      <h2 class="card-type-title">FESTIVAL<br>CARDS</h2>
+      <p class="card-type-desc">High-volume live printing for festivals and conventions. We set up a full branded activation — guests step up, get their photo taken, and walk away with a printed card in minutes. Lines form fast. The energy is electric. This is what Pristine does best.</p>
+      <div class="card-type-specs">
+        <div class="spec-row"><span class="spec-key">Throughput</span><span class="spec-val">Up to 200+ cards per hour</span></div>
+        <div class="spec-row"><span class="spec-key">Setup</span><span class="spec-val">Full branded booth / activation</span></div>
+        <div class="spec-row"><span class="spec-key">Staffing</span><span class="spec-val">Pristine team operates all equipment</span></div>
+        <div class="spec-row"><span class="spec-key">Best For</span><span class="spec-val">Festivals, anime cons, pop culture events</span></div>
+      </div>
+      <a href="book-now.html" class="btn-primary">Book Festival Activation →</a>
+    </div>
+    <div class="card-visual festival">
+      <div class="card-badge">
+        <div class="card-badge-type">Festival Edition</div>
+        <div class="card-badge-name">LIVE PRINT</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- PRICING -->
+<div class="pricing">
+  <div class="pricing-inner">
+    <p style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;">Pricing</p>
+    <h2 style="font-family:var(--display);font-size:clamp(2.5rem,5vw,3.5rem);line-height:1;letter-spacing:0.04em;color:var(--white);">SIMPLE.<br><span style="font-family:var(--serif);font-style:italic;font-weight:300;color:var(--muted);">transparent pricing.</span></h2>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-tier">Starter</div>
+        <div class="pricing-name">SHIPPED ORDER</div>
+        <div class="pricing-price"><sup>$</sup>2<span style="font-size:1.5rem;">.50</span></div>
+        <div class="pricing-note">per card · 25 card minimum</div>
+        <ul class="pricing-features">
+          <li>Choose any card style</li>
+          <li>You send us photos & info</li>
+          <li>We design & ship within 5–7 days</li>
+          <li>Individual card sleeves included</li>
+          <li>Matte or glossy finish</li>
+        </ul>
+        <a href="book-now.html" class="btn-ghost" style="width:100%;justify-content:center;">Get a Quote →</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-tier">Most Popular</div>
+        <div class="pricing-name">LIVE EVENT</div>
+        <div class="pricing-price"><sup>$</sup>499</div>
+        <div class="pricing-note">starting price · 3 hour minimum</div>
+        <ul class="pricing-features">
+          <li>On-site setup & operation</li>
+          <li>Live photo capture + printing</li>
+          <li>Up to 150 cards per event</li>
+          <li>Custom card design included</li>
+          <li>Holographic finish available</li>
+          <li>Pristine staff operates all equipment</li>
+        </ul>
+        <a href="book-now.html" class="btn-primary" style="width:100%;justify-content:center;">Book This Package →</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tier">Enterprise</div>
+        <div class="pricing-name">FESTIVAL / CORP</div>
+        <div class="pricing-price" style="font-size:2rem;letter-spacing:0.04em;margin:1.25rem 0 0.25rem;">CUSTOM</div>
+        <div class="pricing-note">quote · volume pricing available</div>
+        <ul class="pricing-features">
+          <li>Full branded activation build-out</li>
+          <li>200+ cards per hour throughput</li>
+          <li>Multi-day events supported</li>
+          <li>Dedicated Pristine team</li>
+          <li>Custom backdrop + branding</li>
+          <li>Photo booth combo available</li>
+        </ul>
+        <a href="book-now.html" class="btn-ghost" style="width:100%;justify-content:center;">Request Custom Quote →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<div class="process">
+  <p style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;">How It Works</p>
+  <h2 style="font-family:var(--display);font-size:clamp(2rem,4vw,3rem);line-height:1;letter-spacing:0.04em;color:var(--white);">FROM IDEA TO <span style="font-family:var(--serif);font-style:italic;font-weight:300;color:var(--muted);">legend.</span></h2>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-circle">01</div>
+      <div class="step-label">BOOK</div>
+      <p class="step-desc">Fill out our quote form with your event type, date & card style</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">02</div>
+      <div class="step-label">DESIGN</div>
+      <p class="step-desc">We create your custom card template — you approve before printing</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">03</div>
+      <div class="step-label">PRINT</div>
+      <p class="step-desc">Live at your event or shipped to your door within 5–7 days</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">04</div>
+      <div class="step-label">COLLECT</div>
+      <p class="step-desc">Guests receive their card in a sleeve — a keepsake they'll actually keep</p>
+    </div>
+    <div class="process-step">
+      <div class="step-circle">05</div>
+      <div class="step-label">SHARE</div>
+      <p class="step-desc">Tag us on Instagram & TikTok — the reactions are always incredible</p>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq">
+  <div class="faq-inner">
+    <p style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;">FAQ</p>
+    <h2 style="font-family:var(--display);font-size:clamp(2rem,4vw,3rem);line-height:1;letter-spacing:0.04em;color:var(--white);margin-bottom:0;">COMMON <span style="font-family:var(--serif);font-style:italic;font-weight:300;color:var(--muted);">questions.</span></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How long does it take to print cards at a live event? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Each card takes 3–5 minutes from photo to finished print at a live event. For festivals and high-volume activations, we bring multiple printers to increase throughput to 200+ cards per hour.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I order cards without doing a live event? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Absolutely. Our shipped order option starts at 25 cards. You send us your photos and information, we design the card and ship within 5–7 business days. Perfect for gifts, team packages, or event favors you want ready before the day.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What card styles can be done at a live event vs shipped only? <span class="faq-icon">+</span></button>
+        <div class="faq-a">All six card types (holographic, anime, wedding, sports, corporate, festival) can be done both live and shipped. Holographic and foil options are available for both. Anime-style cards require a design step — we'll finalize the art template before your event.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do you travel outside Nashville? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Yes. We serve Nashville, Franklin, Brentwood, Hendersonville, Murfreesboro, Clarksville, Bowling Green, Louisville, and Lexington. For events outside these areas, reach out — we consider travel bookings for larger activations.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Can I add the photo booth to my card order? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Yes — and it's our most popular combo. Book both Golden Hour Photo Booth and live card printing together for a bundled rate. It's the ultimate event activation. Guests get a photo strip and a collectible card from the same setup.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How far in advance should I book? <span class="faq-icon">+</span></button>
+        <div class="faq-a">For live events, we recommend booking at least 3–4 weeks in advance to allow time for card design approval. For shipped orders, 2 weeks is usually enough. Peak season (May–October) books fast — the earlier the better.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <h2>READY TO BECOME<br><span style="background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 50%,var(--holo-1) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">A COLLECTIBLE?</span></h2>
+  <p>Tell us your event date and card style. We'll have a quote back to you within 24 hours.</p>
+  <div class="cta-actions">
+    <a href="book-now.html" class="btn-primary">Get a Custom Quote →</a>
+    <a href="photo-booth.html" class="btn-ghost">See Photo Booth →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-brand">PRISTINE<span>.</span></a>
+    <ul class="footer-links">
+      <li><a href="custom-cards.html">Custom Cards</a></li>
+      <li><a href="photo-booth.html">Photo Booth</a></li>
+      <li><a href="book-now.html">Book Now</a></li>
+    </ul>
+    <span class="footer-copy">© 2025 Pristine Custom Cards · Nashville, TN</span>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+function setFilter(btn, type) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.card-type-block').forEach(block => {
+    if (type === 'all' || block.dataset.type === type) {
+      block.style.display = 'grid';
+    } else {
+      block.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>
