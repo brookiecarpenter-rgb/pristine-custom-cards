@@ -15,7 +15,7 @@
   --border: rgba(255,255,255,0.08);
   --border-bright: rgba(255,255,255,0.18);
   --text: #e8e4dc;
-  --muted: #7a766e;
+  --muted: #a09c94;
   --gold: #c9a84c;
   --gold-light: #e8c97a;
   --holo-1: #7dd3e8;
@@ -310,6 +310,7 @@ nav {
   font-size: 2.2rem;
   color: var(--white);
   letter-spacing: 0.05em;
+  text-align: center;
 }
 .stat-label {
   font-family: var(--mono);
@@ -318,6 +319,7 @@ nav {
   text-transform: uppercase;
   color: var(--muted);
   margin-top: 0.15rem;
+  text-align: center;
 }
 
 @keyframes fadeUp {
@@ -328,13 +330,16 @@ nav {
 /* ── MARQUEE ── */
 .marquee-wrap {
   background: var(--gold);
-  padding: 0.7rem 0;
+  padding: 0.75rem 0;
   overflow: hidden;
   border-top: 1px solid rgba(0,0,0,0.15);
   border-bottom: 1px solid rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
 }
 .marquee-track {
   display: flex;
+  align-items: center;
   gap: 0;
   animation: marquee 22s linear infinite;
   white-space: nowrap;
@@ -345,10 +350,20 @@ nav {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--black);
-  padding: 0 2.5rem;
+  padding: 0 2rem;
   flex-shrink: 0;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
 }
-.marquee-track span.dot { padding: 0; color: rgba(0,0,0,0.4); font-size: 1rem; }
+.marquee-track span.dot {
+  padding: 0;
+  color: rgba(0,0,0,0.5);
+  font-size: 0.55rem;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
 
 @keyframes marquee {
   from { transform: translateX(0); }
@@ -514,9 +529,13 @@ section { padding: 7rem 3rem; }
   font-family: var(--display);
   font-size: 4rem;
   letter-spacing: 0.04em;
-  color: rgba(255,255,255,0.06);
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   line-height: 1;
   margin-bottom: 1.25rem;
+  opacity: 0.85;
 }
 
 .step-title {
@@ -620,17 +639,8 @@ section { padding: 7rem 3rem; }
 }
 
 .golden-hour::before {
-  content: 'GOLDEN HOUR';
-  position: absolute;
-  right: -2rem;
-  top: 50%;
-  transform: translateY(-50%) rotate(90deg);
-  font-family: var(--display);
-  font-size: 8rem;
-  letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.02);
-  white-space: nowrap;
-  pointer-events: none;
+  content: '';
+  display: none;
 }
 
 .golden-inner {
@@ -681,8 +691,10 @@ section { padding: 7rem 3rem; }
 }
 
 .booth-visual {
-  position: relative;
-  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .booth-card {
@@ -694,12 +706,12 @@ section { padding: 7rem 3rem; }
 
 .booth-card.main {
   width: 100%;
-  height: 100%;
   background: linear-gradient(160deg, #0e1520 0%, #1a0e20 50%, #0e1520 100%);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 2rem;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
 }
 
 .booth-badge {
@@ -727,14 +739,9 @@ section { padding: 7rem 3rem; }
   color: var(--white);
 }
 
-.booth-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  pointer-events: none;
-}
-.orb-1 { width: 200px; height: 200px; background: rgba(125,211,232,0.12); top: 10%; right: 10%; }
-.orb-2 { width: 150px; height: 150px; background: rgba(192,132,252,0.1); bottom: 20%; left: 15%; }
+.booth-orb { display: none; }
+.orb-1 { display: none; }
+.orb-2 { display: none; }
 
 /* ── SERVICE AREAS ── */
 .service-areas {
@@ -1041,6 +1048,356 @@ footer {
 }
 
 /* ── RESPONSIVE ── */
+/* ── LIVE EVENT SECTION ── */
+.live-event {
+  background: var(--black);
+  padding: 7rem 3rem;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+}
+
+.live-event::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 70% at 30% 50%, rgba(201,168,76,0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 80% 40%, rgba(125,211,232,0.04) 0%, transparent 60%);
+}
+
+.live-event-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+  position: relative;
+}
+
+.live-event-left .section-label { margin-bottom: 1.2rem; }
+
+.live-event-title {
+  font-family: var(--display);
+  font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+  line-height: 0.95;
+  letter-spacing: 0.03em;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+}
+
+.live-event-title .grad {
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, var(--holo-1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.live-event-desc {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.8;
+  max-width: 440px;
+  margin-bottom: 2rem;
+}
+
+.live-event-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5px;
+  background: var(--border);
+  margin-bottom: 2.5rem;
+}
+
+.live-step {
+  background: var(--black);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: background 0.25s;
+}
+
+.live-step:hover { background: #0d0d0d; }
+
+.live-step-num {
+  font-family: var(--display);
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  flex-shrink: 0;
+  min-width: 32px;
+  line-height: 1;
+}
+
+.live-step-text strong {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+  font-weight: 400;
+  margin-bottom: 0.1rem;
+}
+
+.live-step-text span {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* Live Event right side — card visual */
+.live-event-visual {
+  position: relative;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.live-event-card-wrap {
+  position: relative;
+  width: 280px;
+}
+
+.live-card-mock {
+  width: 280px;
+  height: 392px;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 4px #b88c08,
+    0 0 0 7px #f0c830,
+    0 0 0 9px #8a6400,
+    0 30px 60px rgba(0,0,0,0.8);
+  animation: cardFloat 5s ease-in-out infinite;
+}
+
+@keyframes cardFloat {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-14px) rotate(-2deg); }
+}
+
+.live-card-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, #7a1408 0%, #9a1c0c 45%, #b82010 100%);
+}
+
+.live-card-sparkle {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(125deg,
+    transparent 0%,
+    rgba(255,220,80,0.18) 25%,
+    rgba(255,160,40,0.12) 45%,
+    transparent 60%,
+    rgba(255,230,100,0.1) 80%
+  );
+  mix-blend-mode: screen;
+  animation: holoShift 4s ease-in-out infinite;
+}
+
+@keyframes holoShift {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.live-card-content {
+  position: relative;
+  z-index: 2;
+  padding: 10px 10px 8px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.lcc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.lcc-stage {
+  font-family: var(--mono);
+  font-size: 0.42rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.5);
+}
+
+.lcc-name {
+  font-family: 'Oswald', var(--display), sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111;
+  flex: 1;
+  padding: 0 5px;
+}
+
+.lcc-hp {
+  font-family: 'Oswald', var(--display), sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #c81010;
+}
+
+.lcc-img {
+  width: 100%;
+  height: 150px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
+  border: 2px solid #b88c08;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  margin-bottom: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.lcc-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 60%);
+}
+
+.lcc-dex {
+  font-family: var(--mono);
+  font-size: 0.42rem;
+  letter-spacing: 0.05em;
+  color: #111;
+  text-align: center;
+  background: rgba(200,152,10,0.2);
+  border-radius: 2px;
+  padding: 2px 5px;
+  margin-bottom: 5px;
+}
+
+.lcc-moves {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.lcc-move {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding: 3px 4px;
+}
+
+.lcc-move-name {
+  font-family: var(--display);
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  color: #c81010;
+}
+
+.lcc-move-dmg {
+  font-family: var(--display);
+  font-size: 0.7rem;
+  color: #111;
+}
+
+.lcc-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 4px;
+  border-top: 1px solid rgba(0,0,0,0.12);
+  margin-top: 4px;
+}
+
+.lcc-footer-num {
+  font-family: var(--mono);
+  font-size: 0.36rem;
+  letter-spacing: 0.08em;
+  color: rgba(0,0,0,0.4);
+}
+
+/* floating elements around card */
+.card-orbit {
+  position: absolute;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a0808, #2a1005);
+}
+
+.card-orbit-1 {
+  width: 90px;
+  height: 126px;
+  top: 20px;
+  right: -50px;
+  transform: rotate(12deg);
+  animation: cardFloat 6s ease-in-out infinite 1s;
+  box-shadow: 0 0 0 2px #b88c08, 0 0 0 4px #f0c830, 0 0 0 5px #8a6400;
+}
+
+.card-orbit-2 {
+  width: 70px;
+  height: 98px;
+  bottom: 40px;
+  left: -35px;
+  transform: rotate(-8deg);
+  animation: cardFloat 7s ease-in-out infinite 0.5s;
+  box-shadow: 0 0 0 2px #b88c08, 0 0 0 4px #f0c830, 0 0 0 5px #8a6400;
+  background: linear-gradient(135deg, #0d0538, #180a52);
+}
+
+.card-orbit::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(125deg, transparent 0%, rgba(255,215,0,0.15) 40%, transparent 70%);
+  mix-blend-mode: screen;
+}
+
+/* glow orb behind card */
+.live-card-glow {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* event badge */
+.live-event-badge {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--black);
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+@media (max-width: 900px) {
+  .live-event-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .live-event-visual { height: 380px; }
+  .live-event { padding: 5rem 1.5rem; }
+}
+
 @media (max-width: 900px) {
   nav { padding: 1rem 1.5rem; }
   .nav-links, .nav-cta { display: none; }
@@ -1096,8 +1453,8 @@ footer {
   <ul class="nav-links">
     <li><a href="#cards">Custom Cards</a></li>
     <li><a href="#photobooth">Photo Booth</a></li>
-    <li><a href="#events">Events</a></li>
-    <li><a href="#gallery">Gallery</a></li>
+    
+    <li></li>
   </ul>
   <a href="#book" class="nav-cta">Book Now</a>
   <button class="nav-toggle" onclick="this.textContent = this.textContent === 'MENU' ? 'CLOSE' : 'MENU'">MENU</button>
@@ -1173,7 +1530,6 @@ footer {
 
   <div class="service-panel cards-panel">
     <div class="service-num">01 / 02</div>
-    <div class="service-icon">🃏</div>
     <h2 class="service-title">PRISTINE<br>CUSTOM CARDS</h2>
     <p class="service-subtitle">Premium trading card printing</p>
     <p class="service-desc">We print studio-quality custom trading cards on-site at your event — or ship directly to you. Holographic foil, anime-style art, sports cards, wedding keepsakes, and more. Your guests leave as legends.</p>
@@ -1190,14 +1546,12 @@ footer {
 
   <div class="service-panel booth-panel service-divider" id="photobooth">
     <div class="service-num">02 / 02</div>
-    <div class="service-icon">📸</div>
     <img src="images/golden-hour-logo.png" alt="Golden Hour Photo Booth" style="height:72px;width:auto;object-fit:contain;display:block;margin-bottom:0.75rem;">
     <p class="service-subtitle">A Pristine Custom Cards division</p>
-    <p class="service-desc">Nashville's most visually striking photo booth rental. Not a prop-box-and-pipe-drape setup — a full luxury photo activation. 360 booths, glam booths, roaming setups. Custom overlays, instant prints, digital delivery.</p>
+    <p class="service-desc">Nashville's most visually striking photo booth rental. Not a prop-box-and-pipe-drape setup — a full luxury photo activation. 360 booths, glam booths, custom overlays, instant prints, digital delivery.</p>
     <div class="service-tags">
       <span class="tag">360 Booth</span>
       <span class="tag">Glam Booth</span>
-      <span class="tag">Roaming</span>
       <span class="tag">Weddings</span>
       <span class="tag">Corporate</span>
       <span class="tag">Festivals</span>
@@ -1312,13 +1666,6 @@ footer {
         <div class="booth-feature">
           <span class="booth-feature-icon">◆</span>
           <div class="booth-feature-text">
-            <strong>Roaming Photo Booth</strong>
-            <span>We bring the camera to your guests — perfect for large events and VIP moments.</span>
-          </div>
-        </div>
-        <div class="booth-feature">
-          <span class="booth-feature-icon">◆</span>
-          <div class="booth-feature-text">
             <strong>Custom Trading Card Combo</strong>
             <span>Book the booth and get live card printing included. Our most popular package.</span>
           </div>
@@ -1327,30 +1674,39 @@ footer {
     </div>
 
     <div class="booth-visual">
-      <div class="orb-1"></div>
-      <div class="orb-2"></div>
       <div class="booth-card main">
-        <div style="flex:1; display:flex; align-items:center; justify-content:center;">
-          <div style="text-align:center;">
-            <img src="images/golden-hour-logo.png" alt="Golden Hour Photo Booth" style="height:55px;width:auto;object-fit:contain;display:block;margin:0 auto 1rem;opacity:0.9;">
-            <div style="width:120px; height:120px; border-radius:50%; border:1px solid rgba(201,168,76,0.2); margin:0 auto; display:flex; align-items:center; justify-content:center; position:relative;">
-              <div style="width:90px; height:90px; border-radius:50%; border:1px solid rgba(125,211,232,0.2); display:flex; align-items:center; justify-content:center;">
-                <span style="font-size:2.5rem;">📸</span>
-              </div>
-              <div style="position:absolute; top:-1px; left:50%; width:6px; height:6px; border-radius:50%; background:var(--gold); transform:translateX(-50%);"></div>
+        <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2rem; padding:2.5rem;">
+
+          <!-- Golden Hour Logo -->
+          <img src="images/golden-hour-logo.png" alt="Golden Hour Photo Booth"
+            style="width:220px; max-width:80%; height:auto; object-fit:contain; display:block;">
+
+          <!-- Divider -->
+          <div style="width:60px; height:1px; background:linear-gradient(90deg,transparent,var(--gold),transparent);"></div>
+
+          <!-- Tagline -->
+          <p style="font-family:var(--serif); font-style:italic; font-size:1rem; color:var(--muted); text-align:center; line-height:1.6; max-width:260px;">
+            Nashville's luxury photo activation — a Pristine Custom Cards division
+          </p>
+
+          <!-- Stats row -->
+          <div style="display:flex; gap:2rem; justify-content:center;">
+            <div style="text-align:center;">
+              <div style="font-family:var(--display); font-size:2rem; letter-spacing:0.05em; color:var(--white); line-height:1;">9</div>
+              <div style="font-family:var(--mono); font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-top:0.25rem;">Cities</div>
             </div>
-            <div style="font-family:var(--serif); font-style:italic; font-size:0.85rem; color:var(--muted); margin-top:1.25rem;">A Pristine Custom Cards Division</div>
+            <div style="width:1px; background:var(--border-bright); align-self:stretch;"></div>
+            <div style="text-align:center;">
+              <div style="font-family:var(--display); font-size:2rem; letter-spacing:0.05em; color:var(--white); line-height:1;">4</div>
+              <div style="font-family:var(--mono); font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-top:0.25rem;">Booth Types</div>
+            </div>
+            <div style="width:1px; background:var(--border-bright); align-self:stretch;"></div>
+            <div style="text-align:center;">
+              <div style="font-family:var(--display); font-size:2rem; letter-spacing:0.05em; color:var(--white); line-height:1;">24hr</div>
+              <div style="font-family:var(--mono); font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); margin-top:0.25rem;">Response</div>
+            </div>
           </div>
-        </div>
-        <div style="display:flex; gap:1rem;">
-          <div class="booth-badge">
-            <span class="booth-badge-label">Coverage Area</span>
-            <span class="booth-badge-value">9 Cities</span>
-          </div>
-          <div class="booth-badge">
-            <span class="booth-badge-label">Response Time</span>
-            <span class="booth-badge-value">24 Hours</span>
-          </div>
+
         </div>
       </div>
     </div>
@@ -1410,6 +1766,106 @@ footer {
   </div>
 </div>
 
+<!-- LIVE EVENT SECTION -->
+<div class="live-event" id="live-event">
+  <div class="live-event-inner">
+
+    <div class="live-event-left">
+      <p class="section-label">At The Event</p>
+      <h2 class="live-event-title">
+        DESIGN YOUR<br>CARD <span class="grad">LIVE.</span>
+      </h2>
+      <p class="live-event-desc">At every Pristine live event, guests step up to our station and design their own custom trading card in real time — choose your type, stats, moves, and finish. Printed and in your hands in minutes.</p>
+
+      <div class="live-event-steps">
+        <div class="live-step">
+          <span class="live-step-num">01</span>
+          <div class="live-step-text">
+            <strong>Step Up to the Booth</strong>
+            <span>Find us at the event — look for the Pristine station</span>
+          </div>
+        </div>
+        <div class="live-step">
+          <span class="live-step-num">02</span>
+          <div class="live-step-text">
+            <strong>Design Your Card</strong>
+            <span>Pick your type, stats, moves, finish, and bundle</span>
+          </div>
+        </div>
+        <div class="live-step">
+          <span class="live-step-num">03</span>
+          <div class="live-step-text">
+            <strong>We Print It Live</strong>
+            <span>Studio-quality card printed on-site in minutes</span>
+          </div>
+        </div>
+        <div class="live-step">
+          <span class="live-step-num">04</span>
+          <div class="live-step-text">
+            <strong>Walk Away a Legend</strong>
+            <span>Your card comes in a protective sleeve — a collectible for life</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="card-customizer.html" class="btn-primary" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--gold);color:var(--black);font-family:var(--mono);font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;padding:1rem 2rem;border:none;border-radius:2px;cursor:pointer;text-decoration:none;transition:background 0.2s,transform 0.2s;font-weight:bold;">
+        Design Your Card Now →
+      </a>
+    </div>
+
+    <div class="live-event-visual">
+      <div class="live-card-glow"></div>
+
+      <!-- floating orbit cards -->
+      <div class="card-orbit card-orbit-1"></div>
+      <div class="card-orbit card-orbit-2"></div>
+
+      <div class="live-event-card-wrap">
+        <div class="live-event-badge">🃏 Live at Our Events</div>
+        <div class="live-card-mock">
+          <div class="live-card-bg"></div>
+          <div class="live-card-sparkle"></div>
+          <div class="live-card-content">
+            <div class="lcc-header">
+              <span class="lcc-stage">Stage Legend</span>
+              <span class="lcc-name">YOUR NAME HERE</span>
+              <span class="lcc-hp">150 HP</span>
+            </div>
+            <div class="lcc-img">
+              📸
+              <div class="lcc-img-overlay"></div>
+            </div>
+            <div class="lcc-dex">Festival Pokémon · Nashville PokéFest 2026</div>
+            <div class="lcc-moves">
+              <div class="lcc-move">
+                <span class="lcc-move-name">Inspiring Presence</span>
+                <span class="lcc-move-dmg">50₀</span>
+              </div>
+              <div class="lcc-move">
+                <span class="lcc-move-name">Positive Energy</span>
+                <span class="lcc-move-dmg">60</span>
+              </div>
+              <div class="lcc-move">
+                <span class="lcc-move-name">Friendship Boost</span>
+                <span class="lcc-move-dmg">90</span>
+              </div>
+              <div class="lcc-move">
+                <span class="lcc-move-name">Festival Spirit</span>
+                <span class="lcc-move-dmg">120+</span>
+              </div>
+            </div>
+            <div class="lcc-footer">
+              <span class="lcc-footer-num">PF2026-001 ★</span>
+              <span class="lcc-footer-num">© Nashville PokéFest 2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <!-- CTA / BOOK -->
 <div class="cta" id="book">
   <div class="cta-inner">
@@ -1446,8 +1902,8 @@ footer {
       <div class="footer-links">
         <a href="#cards">Custom Trading Cards</a>
         <a href="#photobooth">Photo Booth Rental</a>
-        <a href="#events">Event Activations</a>
-        <a href="#gallery">Gallery</a>
+        
+        
       </div>
     </div>
 
