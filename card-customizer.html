@@ -72,12 +72,15 @@ textarea.fi{resize:vertical;min-height:60px;line-height:1.55;}
 .smini{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem;}
 
 /* TYPE GRID */
-.type-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:0.35rem;}
-.type-btn{border:1px solid var(--border);border-radius:4px;padding:0.38rem 0.15rem;cursor:pointer;text-align:center;transition:all 0.2s;background:transparent;}
+.type-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:0.4rem;}
+.type-btn{border:1px solid var(--border);border-radius:6px;padding:0.4rem 0.1rem;cursor:pointer;text-align:center;transition:all 0.2s;background:transparent;display:flex;flex-direction:column;align-items:center;gap:0.15rem;}
 .type-btn:hover{border-color:var(--border-bright);transform:translateY(-1px);}
 .type-btn.selected{border-width:2px;transform:translateY(-2px);}
-.tbe{font-size:1rem;display:block;margin-bottom:0.1rem;}
-.tbn{font-family:var(--mono);font-size:0.46rem;letter-spacing:0.05em;text-transform:uppercase;display:block;}
+.type-icon{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 1px 4px rgba(0,0,0,0.4);}
+.tbn{font-family:var(--mono);font-size:0.4rem;letter-spacing:0.04em;text-transform:uppercase;display:block;}
+/* energy dots on card — circular type icons */
+.energy-dot{width:11px;height:11px;border-radius:50%;border:1px solid rgba(0,0,0,0.4);flex-shrink:0;display:inline-block;box-shadow:inset 0 1px 2px rgba(255,255,255,0.25);}
+.energy-dot.colorless{background:radial-gradient(circle at 38% 35%,#e4e4e4,#999);}
 
 /* FINISH */
 .finish-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem;}
@@ -362,7 +365,7 @@ textarea.fi{resize:vertical;min-height:60px;line-height:1.55;}
   <div class="progress-steps">
     <div class="pstep active" id="pi-1"><div class="pstep-circle" id="pc-1">1</div><span class="pstep-label">Card Design</span></div>
     <div class="pstep-line"></div>
-    <div class="pstep" id="pi-2"><div class="pstep-circle" id="pc-2">2</div><span class="pstep-label">Stats & Moves</span></div>
+    <div class="pstep" id="pi-2"><div class="pstep-circle" id="pc-2">2</div><span class="pstep-label">Choose Your Bundle</span></div>
     <div class="pstep-line"></div>
     <div class="pstep" id="pi-3"><div class="pstep-circle" id="pc-3">3</div><span class="pstep-label">Your Info</span></div>
     <div class="pstep-line"></div>
@@ -375,51 +378,102 @@ textarea.fi{resize:vertical;min-height:60px;line-height:1.55;}
   <!-- ═══ FORM PANEL ═══ -->
   <div class="form-panel">
 
-    <!-- STEP 1 -->
+    <!-- STEP 1 — CARD DESIGN (streamlined) -->
     <div class="form-step active" id="step-1">
       <div class="step-heading">DESIGN YOUR<br>POKÉFEST CARD.</div>
-      <p class="step-sub">Every detail updates live in the card preview. Make it yours.</p>
+      <p class="step-sub">Fill in your card details — the preview updates live on the right.</p>
 
+      <!-- NAME -->
       <div class="field-group">
         <label class="field-label">Trainer Name</label>
         <input class="fi" type="text" id="card-name" placeholder="e.g. Brooke Carpenter" maxlength="22" oninput="up()">
       </div>
+
+      <!-- HP -->
       <div class="field-group">
-        <label class="field-label">Trainer Title / Subtitle</label>
-        <input class="fi" type="text" id="card-subtitle" placeholder="e.g. Festival Trainer" maxlength="28" oninput="up()">
-      </div>
-      <div class="field-row">
-        <div class="field-group">
-          <label class="field-label">HP</label>
-          <div style="display:flex;gap:0.5rem;align-items:center;">
-            <input type="range" id="card-hp" min="30" max="340" step="10" value="150" class="slider" oninput="document.getElementById('hp-show').textContent=this.value;up()">
-            <span id="hp-show" style="font-family:var(--display);font-size:1.2rem;color:var(--gold-bright);min-width:38px;text-align:right;">150</span>
-          </div>
-        </div>
-        <div class="field-group">
-          <label class="field-label">Card Stage</label>
-          <select class="fi" id="card-stage" onchange="up()">
-            <option>Basic</option><option>Stage 1</option><option>Stage 2</option>
-            <option selected>Stage Legend</option><option>GX</option><option>EX</option><option>VMAX</option>
-          </select>
+        <label class="field-label">HP</label>
+        <div style="display:flex;gap:0.75rem;align-items:center;">
+          <input type="range" id="card-hp" min="30" max="340" step="10" value="150" class="slider" oninput="document.getElementById('hp-show').textContent=this.value;up()" style="flex:1;">
+          <span id="hp-show" style="font-family:var(--display);font-size:1.4rem;color:var(--gold-bright);min-width:44px;text-align:right;">150</span>
         </div>
       </div>
 
+      <!-- ABILITY NAME -->
+      <div class="field-group">
+        <label class="field-label">Ability Name</label>
+        <input class="fi" type="text" id="ability-name" placeholder="e.g. Inspiring Presence" maxlength="24" oninput="up()">
+        <div class="field-hint">The passive ability shown at the top of the moves section</div>
+      </div>
+
+      <!-- ATTACK NAME -->
+      <div class="field-group">
+        <label class="field-label">Attack Name</label>
+        <input class="fi" type="text" id="attack-name" placeholder="e.g. Festival Spirit" maxlength="24" oninput="up()">
+        <div class="field-hint">Your main attack move shown on the card</div>
+      </div>
+
+      <!-- EX RULE -->
+      <div class="field-group">
+        <label class="field-label">EX Rule Box Text</label>
+        <textarea class="fi" id="ex-rule" maxlength="140" oninput="up()" style="min-height:65px;" placeholder="e.g. When your Pokémon EX is Knocked Out, your opponent takes 2 Prize cards."></textarea>
+        <div class="field-hint">Shown in the rule box at the bottom of the card</div>
+      </div>
+
+      <!-- WEAKNESS & RESISTANCE -->
+      <div class="field-row">
+        <div class="field-group">
+          <label class="field-label">Weakness</label>
+          <div style="display:flex;gap:0.4rem;">
+            <select class="fi" id="weak-type" style="flex:1" onchange="up()">
+              <option value="">None</option>
+              <option>Grass</option><option>Fire</option><option>Water</option>
+              <option>Lightning</option><option>Psychic</option><option>Fighting</option>
+              <option>Darkness</option><option>Metal</option><option>Dragon</option>
+              <option>Fairy</option><option>Colorless</option>
+            </select>
+            <select class="fi" style="width:72px" id="weak-mult" onchange="up()">
+              <option>×2</option><option>×3</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Resistance</label>
+          <div style="display:flex;gap:0.4rem;">
+            <select class="fi" id="res-type" style="flex:1" onchange="up()">
+              <option value="">None</option>
+              <option>Grass</option><option>Fire</option><option>Water</option>
+              <option>Lightning</option><option>Psychic</option><option>Fighting</option>
+              <option>Darkness</option><option>Metal</option><option>Dragon</option>
+              <option>Fairy</option><option>Colorless</option>
+            </select>
+            <select class="fi" style="width:72px" id="res-amt" onchange="up()">
+              <option>-20</option><option>-30</option><option>-50</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- RETREAT -->
+      <div class="field-group">
+        <label class="field-label">Retreat Cost</label>
+        <select class="fi" id="retreat" onchange="up()">
+          <option value="0">Free</option>
+          <option value="1">⭐ 1 Energy</option>
+          <option value="2">⭐⭐ 2 Energy</option>
+          <option value="3" selected>⭐⭐⭐ 3 Energy</option>
+          <option value="4">⭐⭐⭐⭐ 4 Energy</option>
+        </select>
+      </div>
+
+      <div class="sdiv"></div>
+
+      <!-- TYPE -->
       <div class="field-group">
         <label class="field-label">Pokémon Type</label>
         <div class="type-grid" id="type-grid"></div>
       </div>
 
-      <div class="field-group">
-        <label class="field-label">Secondary Type (optional)</label>
-        <select class="fi" id="card-subtype" onchange="up()">
-          <option value="">None</option>
-          <option>Fire</option><option>Water</option><option>Grass</option><option>Electric</option>
-          <option>Psychic</option><option>Dark</option><option>Fighting</option><option>Dragon</option>
-          <option>Fairy</option><option>Ghost</option><option>Ice</option>
-        </select>
-      </div>
-
+      <!-- FINISH -->
       <div class="field-group">
         <label class="field-label">Card Finish</label>
         <div class="finish-grid">
@@ -438,8 +492,9 @@ textarea.fi{resize:vertical;min-height:60px;line-height:1.55;}
         </div>
       </div>
 
+      <!-- CARD BACK -->
       <div class="field-group">
-        <label class="field-label">Card Back Design — Tap card preview to see the back</label>
+        <label class="field-label">Card Back — Tap card preview to see the back</label>
         <div class="back-grid">
           <div class="back-opt selected" id="back-0" onclick="selBack(0)">
             <img src="images/card-back-gold.png" alt="Gold PokéFest back">
@@ -454,8 +509,9 @@ textarea.fi{resize:vertical;min-height:60px;line-height:1.55;}
         </div>
       </div>
 
+      <!-- PHOTO -->
       <div class="field-group">
-        <label class="field-label">Your Photo (appears on the card)</label>
+        <label class="field-label">Your Photo</label>
         <div class="photo-upload" id="upload-zone">
           <input type="file" accept="image/*" onchange="handlePhoto(this)">
           <span class="pu-icon">📸</span>
@@ -465,68 +521,72 @@ textarea.fi{resize:vertical;min-height:60px;line-height:1.55;}
         </div>
       </div>
 
-      <div class="field-group">
-        <label class="field-label">Pokédex Info Line</label>
-        <input class="fi" type="text" id="card-dex" placeholder="Festival Pokémon. Length: 5'6&quot;, Weight: 115 lbs." maxlength="60" oninput="up()">
-      </div>
-
-      <div class="field-group">
-        <label class="field-label">Flavor Text (italic · shown at card bottom)</label>
-        <textarea class="fi" id="card-flavor" maxlength="110" oninput="up()" style="min-height:55px;" placeholder='"A bright and passionate Trainer who brings happiness, friendship, and good vibes to Nashville PokéFest."'></textarea>
-      </div>
-
       <div class="form-nav">
-        <button class="btn-next" onclick="goStep(2)">Next: Stats & Moves →</button>
+        <button class="btn-next" onclick="goStep(2)">Next: Your Bundle →</button>
       </div>
     </div>
 
-    <!-- STEP 2 -->
+    <!-- STEP 2 — BUNDLE & ADD-ONS (was step 3) -->
     <div class="form-step" id="step-2">
-      <div class="step-heading">STATS &<br>MOVES.</div>
-      <p class="step-sub">Set your base stats and up to 4 moves — styled exactly like the sample card.</p>
+      <div class="step-heading">CHOOSE YOUR<br>BUNDLE.</div>
+      <p class="step-sub">Pick your package and any add-ons. Your total updates live.</p>
 
-      <div class="smini">Base Stats</div>
-      <div id="stat-rows"></div>
-      <div class="stat-tot">Total: <span id="stat-total">0</span> / 600</div>
-
-      <div class="sdiv"></div>
-      <div id="moves-section"></div>
-      <div class="sdiv"></div>
-
-      <div class="field-row">
-        <div class="field-group">
-          <label class="field-label">Weakness</label>
-          <div style="display:flex;gap:0.4rem;">
-            <select class="fi" id="weak-type" style="flex:1" onchange="up()">
-              <option value="">None</option><option>🔥 Fire</option><option>💧 Water</option>
-              <option>⚡ Electric</option><option>🌿 Grass</option><option>🔮 Psychic</option>
-              <option>🌑 Dark</option><option>👊 Fighting</option>
-            </select>
-            <select class="fi" style="width:72px" id="weak-mult" onchange="up()">
-              <option>×2</option><option>×3</option>
-            </select>
-          </div>
+      <div class="smini">Choose Your Bundle</div>
+      <div class="bundle-grid" id="bundle-grid">
+        <div class="bundle-card selected" id="bun-card-only" onclick="selBundle('card-only')">
+          <span class="bundle-icon">🃏</span>
+          <span class="bundle-name">CARD ONLY</span>
+          <span class="bundle-items">1 custom trading card<br>in protective sleeve</span>
+          <span class="bundle-price">$25</span>
         </div>
-        <div class="field-group">
-          <label class="field-label">Resistance</label>
-          <div style="display:flex;gap:0.4rem;">
-            <select class="fi" id="res-type" style="flex:1" onchange="up()">
-              <option value="">None</option><option>🔥 Fire</option><option>💧 Water</option>
-              <option>⚡ Electric</option><option>🌿 Grass</option><option>🔮 Psychic</option><option>👊 Fighting</option>
-            </select>
-            <select class="fi" style="width:72px" id="res-amt" onchange="up()">
-              <option>-20</option><option>-30</option><option>-50</option>
-            </select>
-          </div>
+        <div class="bundle-card bundle-keychain" id="bun-keychain" onclick="selBundle('keychain')">
+          <span class="bundle-card-badge badge-save">BUNDLE</span>
+          <span class="bundle-icon">🔑</span>
+          <span class="bundle-name">KEYCHAIN BUNDLE</span>
+          <span class="bundle-items">Custom card<br>+ matching keychain</span>
+          <span class="bundle-price">$40 <span class="bundle-was">$55</span></span>
+        </div>
+        <div class="bundle-card bundle-case" id="bun-case" onclick="selBundle('case')">
+          <span class="bundle-card-badge badge-save">BUNDLE</span>
+          <span class="bundle-icon">🛡️</span>
+          <span class="bundle-name">CASE BUNDLE</span>
+          <span class="bundle-items">Custom card<br>+ hard protective case</span>
+          <span class="bundle-price">$35 <span class="bundle-was">$45</span></span>
+        </div>
+        <div class="bundle-card bundle-vip full-width" id="bun-vip" onclick="selBundle('vip')">
+          <span class="bundle-card-badge badge-best">⭐ Best Value</span>
+          <span class="bundle-icon">👑</span>
+          <span class="bundle-name">VIP BUNDLE — EVERYTHING</span>
+          <span class="bundle-items">Custom card + matching keychain + hard protective case</span>
+          <span class="bundle-price">$50 <span class="bundle-was">$85</span></span>
         </div>
       </div>
 
-      <div class="field-group">
-        <label class="field-label">Retreat Cost</label>
-        <select class="fi" id="retreat" onchange="up()">
-          <option value="0">Free</option><option value="1">⭐ 1</option>
-          <option value="2">⭐⭐ 2</option><option value="3" selected>⭐⭐⭐ 3</option><option value="4">⭐⭐⭐⭐ 4</option>
-        </select>
+      <div class="sdiv"></div>
+
+      <div class="smini">Add-Ons</div>
+      <div class="addon-list">
+        <div class="addon-row" id="addon-print" onclick="toggleAddon('print',10)">
+          <div class="addon-left">
+            <div class="addon-check" id="acheck-print">✓</div>
+            <span class="addon-emoji">🖨️</span>
+            <div class="addon-info"><strong>Extra Print</strong><span>A second printed copy of your card</span></div>
+          </div>
+          <span class="addon-price">+$10</span>
+        </div>
+        <div class="addon-row" id="addon-keychain" onclick="toggleAddon('keychain',30)">
+          <div class="addon-left">
+            <div class="addon-check" id="acheck-keychain">✓</div>
+            <span class="addon-emoji">🔑</span>
+            <div class="addon-info"><strong>Keychain Only</strong><span>Matching keychain without bundle</span></div>
+          </div>
+          <span class="addon-price">+$30</span>
+        </div>
+      </div>
+
+      <div class="field-group" style="margin-top:1.25rem;">
+        <label class="field-label">Card Number for Print</label>
+        <input class="fi" type="text" id="card-number" placeholder="e.g. PF2026-007" maxlength="14" oninput="up()">
       </div>
 
       <div class="form-nav">
@@ -563,87 +623,6 @@ textarea.fi{resize:vertical;min-height:60px;line-height:1.55;}
         <button class="notify-btn" onclick="selNotify(this,'both')">📱 + 📧 Both</button>
       </div>
 
-      <div class="sdiv"></div>
-
-      <!-- BUNDLES -->
-      <div class="smini">Choose Your Bundle</div>
-      <div class="bundle-grid" id="bundle-grid">
-
-        <div class="bundle-card selected" id="bun-card-only" onclick="selBundle('card-only')">
-          <span class="bundle-icon">🃏</span>
-          <span class="bundle-name">CARD ONLY</span>
-          <span class="bundle-items">1 custom trading card<br>in protective sleeve</span>
-          <span class="bundle-price">$25</span>
-        </div>
-
-        <div class="bundle-card bundle-keychain" id="bun-keychain" onclick="selBundle('keychain')">
-          <span class="bundle-card-badge badge-save">BUNDLE</span>
-          <span class="bundle-icon">🔑</span>
-          <span class="bundle-name">KEYCHAIN BUNDLE</span>
-          <span class="bundle-items">Custom card<br>+ matching keychain</span>
-          <span class="bundle-price">$40 <span class="bundle-was">$55</span></span>
-        </div>
-
-        <div class="bundle-card bundle-case" id="bun-case" onclick="selBundle('case')">
-          <span class="bundle-card-badge badge-save">BUNDLE</span>
-          <span class="bundle-icon">🛡️</span>
-          <span class="bundle-name">CASE BUNDLE</span>
-          <span class="bundle-items">Custom card<br>+ hard protective case</span>
-          <span class="bundle-price">$35 <span class="bundle-was">$45</span></span>
-        </div>
-
-        <div class="bundle-card bundle-vip full-width" id="bun-vip" onclick="selBundle('vip')">
-          <span class="bundle-card-badge badge-best">⭐ Best Value</span>
-          <span class="bundle-icon">👑</span>
-          <span class="bundle-name">VIP BUNDLE — EVERYTHING</span>
-          <span class="bundle-items">Custom card + matching keychain + hard protective case · The full Pristine experience</span>
-          <span class="bundle-price">$50 <span class="bundle-was">$85</span></span>
-        </div>
-
-      </div>
-
-      <div class="sdiv"></div>
-
-      <!-- ADD-ONS -->
-      <div class="smini">Add-Ons</div>
-      <div class="addon-list">
-
-        <div class="addon-row" id="addon-print" onclick="toggleAddon('print',10)">
-          <div class="addon-left">
-            <div class="addon-check" id="acheck-print">✓</div>
-            <span class="addon-emoji">🖨️</span>
-            <div class="addon-info">
-              <strong>Extra Print</strong>
-              <span>A second printed copy of your card</span>
-            </div>
-          </div>
-          <span class="addon-price">+$10</span>
-        </div>
-
-        <div class="addon-row" id="addon-keychain" onclick="toggleAddon('keychain',30)">
-          <div class="addon-left">
-            <div class="addon-check" id="acheck-keychain">✓</div>
-            <span class="addon-emoji">🔑</span>
-            <div class="addon-info">
-              <strong>Keychain Only</strong>
-              <span>Matching keychain without bundle (card separate)</span>
-            </div>
-          </div>
-          <span class="addon-price">+$30</span>
-        </div>
-
-      </div>
-
-      <div class="field-group" style="margin-top:1.25rem;">
-        <label class="field-label">Card Number for Print</label>
-        <input class="fi" type="text" id="card-number" placeholder="e.g. PF2026-007" maxlength="14" oninput="up()">
-      </div>
-
-      <div class="field-group">
-        <label class="field-label">Special Requests for Our Artist (optional)</label>
-        <textarea class="fi" id="special" placeholder="e.g. 'Make the background Nashville skyline' · 'Add a guitar' · 'Include my dog'"></textarea>
-      </div>
-
       <div class="form-nav">
         <button class="btn-back" onclick="goStep(2)">← Back</button>
         <button class="btn-next" onclick="goStep(4)">Next: Payment →</button>
@@ -671,22 +650,13 @@ textarea.fi{resize:vertical;min-height:60px;line-height:1.55;}
       </div>
 
       <div class="smini">Payment Method</div>
-      <div class="pay-opts">
-        <div class="pay-btn selected" onclick="selPay(this,'card')"><span class="pay-icon">💳</span><span class="pay-name">Card</span></div>
-        <div class="pay-btn" onclick="selPay(this,'cash')"><span class="pay-icon">💵</span><span class="pay-name">Cash</span></div>
+      <div class="pay-opts" style="grid-template-columns:1fr 1fr;">
+        <div class="pay-btn selected" onclick="selPay(this,'cash')"><span class="pay-icon">💵</span><span class="pay-name">Cash</span></div>
         <div class="pay-btn" onclick="selPay(this,'venmo')"><span class="pay-icon">📲</span><span class="pay-name">Venmo / CashApp</span></div>
       </div>
 
-      <div id="fields-card" class="pay-fields">
-        <div class="field-group" style="margin-bottom:0.6rem;"><label class="field-label">Name on Card</label><input class="fi" type="text" placeholder="Full name"></div>
-        <div class="field-group" style="margin-bottom:0.6rem;"><label class="field-label">Card Number</label><input class="fi" type="text" placeholder="•••• •••• •••• ••••" maxlength="19" oninput="fmtCard(this)"></div>
-        <div class="field-row">
-          <div class="field-group" style="margin-bottom:0;"><label class="field-label">Expiry</label><input class="fi" type="text" placeholder="MM/YY" maxlength="5"></div>
-          <div class="field-group" style="margin-bottom:0;"><label class="field-label">CVV</label><input class="fi" type="text" placeholder="•••" maxlength="4"></div>
-        </div>
-        <div style="margin-top:0.6rem;font-family:var(--mono);font-size:0.54rem;color:var(--muted);padding:0.65rem;border:1px solid var(--border);border-radius:3px;">🔒 Processed securely via Square. Card data is never stored.</div>
-      </div>
-      <div id="fields-cash" class="pay-fields" style="display:none;">
+      <div id="fields-card" class="pay-fields" style="display:none;"></div>
+      <div id="fields-cash" class="pay-fields">
         <div class="pay-note">💵 Pay cash to a Pristine team member at the booth. Show them your order screen.<br><br><strong style="color:var(--gold-bright);">Amount due: <span id="cash-amt">$25.00</span></strong></div>
       </div>
       <div id="fields-venmo" class="pay-fields" style="display:none;">
@@ -729,69 +699,90 @@ textarea.fi{resize:vertical;min-height:60px;line-height:1.55;}
     <div class="card-scene" onclick="flipCard()">
       <div class="card-3d" id="card-3d">
 
-        <!-- FRONT -->
+        <!-- FRONT — uses blank template PNG as base with text overlaid -->
         <div class="card-face">
-          <div class="pokefest-card">
-            <div class="card-bg-shell bg-fire" id="card-bg"></div>
-            <div class="card-frame-inner"></div>
+          <div class="pokefest-card" style="background:none;">
+
+            <!-- holo/gold shimmer overlays on top of template -->
             <div class="card-holo" id="card-holo"></div>
             <div class="card-gold-shimmer" id="card-gold-shimmer"></div>
             <div class="card-sparkle-overlay" id="sparkles-wrap"></div>
-            <div class="card-inner">
 
-              <!-- TOP BAR: TN badge + stage + name + HP -->
-              <div class="card-top-bar">
-                <div class="card-tn-badge">
-                  <div class="tn-stars">⭐⭐⭐</div>
+            <!-- TEMPLATE IMAGE as base -->
+            <img src="images/card-template-blank.png" alt="card template"
+              style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;display:block;border-radius:14px;">
+
+            <!-- ALL TEXT OVERLAID ON TEMPLATE -->
+            <div style="position:absolute;inset:0;z-index:5;border-radius:14px;overflow:hidden;">
+
+              <!-- "Nashville" top left label -->
+              <div style="position:absolute;top:3.2%;left:19%;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:0.42rem;color:#1a1a1a;letter-spacing:0.04em;">Nashville</div>
+
+              <!-- NAME — top right of TN badge -->
+              <div style="position:absolute;top:2.5%;left:21%;right:9%;display:flex;align-items:baseline;justify-content:space-between;">
+                <span id="prev-name" style="font-family:'Oswald',sans-serif;font-weight:700;font-size:1.05rem;color:#111;letter-spacing:0.01em;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:68%;">Name here</span>
+              </div>
+
+              <!-- TRAINER label below name -->
+              <div style="position:absolute;top:10%;left:21%;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:0.52rem;color:#222;font-style:italic;">
+                <span id="prev-subtitle">Trainer</span>
+              </div>
+
+              <!-- USER PHOTO — overlaid into the black image box area -->
+              <div id="card-img-wrap" style="position:absolute;top:13%;left:6.5%;right:6.5%;height:46%;border-radius:3px;overflow:hidden;background:#000;">
+                <img id="card-photo" style="width:100%;height:100%;object-fit:cover;display:none;" alt="">
+                <div id="ph-emoji" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:3.5rem;background:#111;">👤</div>
+              </div>
+
+              <!-- ABILITY SECTION -->
+              <!-- Ability pill label is baked into template image -->
+              <!-- Ability name text -->
+              <div style="position:absolute;top:62%;left:6%;right:6%;">
+                <div style="display:flex;align-items:center;gap:0.35rem;margin-bottom:1px;">
+                  <span id="prev-ability-name" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.72rem;color:#111;letter-spacing:0.01em;">Ability Name</span>
                 </div>
-                <div class="card-stage-name-hp">
-                  <span class="card-stage-label" id="prev-stage">STAGE LEGEND</span>
-                  <div class="card-name-hp-row">
-                    <span class="card-name-text" id="prev-name">Trainer Name</span>
-                    <span class="card-hp-text" id="prev-hp"><span class="hp-sup">HP</span>150</span>
-                  </div>
+                <div style="font-family:'Barlow Condensed',sans-serif;font-weight:400;font-size:0.48rem;color:#333;line-height:1.3;">Description for Ability effects.</div>
+              </div>
+
+              <!-- MOVE SECTION -->
+              <div style="position:absolute;top:72%;left:6%;right:6%;">
+                <div style="display:flex;align-items:center;gap:0.35rem;margin-bottom:1px;">
+                  <!-- type icon dot -->
+                  <div id="prev-move-icon" style="width:13px;height:13px;border-radius:50%;background:#dd7acc;flex-shrink:0;box-shadow:0 0 0 1px rgba(0,0,0,0.3);"></div>
+                  <span id="prev-attack-name" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.72rem;color:#111;letter-spacing:0.01em;">Move Name</span>
+                </div>
+                <div style="font-family:'Barlow Condensed',sans-serif;font-weight:400;font-size:0.48rem;color:#333;line-height:1.3;">Description for Move effects.</div>
+              </div>
+
+              <!-- WEAKNESS / RESISTANCE / RETREAT ROW -->
+              <div style="position:absolute;top:82.5%;left:3%;right:3%;display:flex;gap:0.5rem;align-items:center;">
+                <!-- weakness box -->
+                <div style="flex:1;background:rgba(255,255,255,0.65);border-radius:3px;padding:2px 5px;display:flex;align-items:center;gap:3px;">
+                  <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.4rem;color:#555;letter-spacing:0.05em;">weakness</span>
+                  <div id="prev-weak-icon" style="width:10px;height:10px;border-radius:50%;background:#4d90d5;display:inline-block;flex-shrink:0;"></div>
+                  <span id="prev-weak-val" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.55rem;color:#111;">+999</span>
+                </div>
+                <!-- resistance box -->
+                <div style="flex:1;background:rgba(255,255,255,0.65);border-radius:3px;padding:2px 5px;display:flex;align-items:center;gap:3px;">
+                  <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.4rem;color:#555;letter-spacing:0.05em;">resistance</span>
+                  <div id="prev-res-icon" style="width:10px;height:10px;border-radius:50%;background:#c8c8a0;display:inline-block;flex-shrink:0;"></div>
+                  <span id="prev-res-val" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.55rem;color:#111;">+999</span>
+                </div>
+                <!-- retreat box -->
+                <div style="flex:1;background:rgba(255,255,255,0.65);border-radius:3px;padding:2px 5px;display:flex;align-items:center;gap:3px;">
+                  <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.4rem;color:#555;letter-spacing:0.05em;">retreat</span>
+                  <div id="prev-retreat-dots" style="display:flex;gap:1px;"></div>
                 </div>
               </div>
 
-              <!-- TYPE ROW -->
-              <div class="card-type-row">
-                <span class="card-subheading" id="prev-subtitle">Festival Trainer</span>
-                <span class="type-pill" id="prev-type-pill" style="background:rgba(200,10,10,0.18);color:#c01010;">🔥 Fire</span>
-                <span class="type-pill" id="prev-sub-pill" style="display:none;margin-left:2px;"></span>
+              <!-- STARS bottom left (baked into template, but we add ☆☆☆ if needed) -->
+
+              <!-- EX RULE — bottom black bar -->
+              <div style="position:absolute;bottom:1.5%;left:24%;right:3%;display:flex;align-items:center;">
+                <span id="prev-ex-rule" style="font-family:'Barlow Condensed',sans-serif;font-weight:400;font-size:0.4rem;color:#fff;line-height:1.3;">When your Pokémon ex is Knocked Out, your opponents gets 2 Points.</span>
               </div>
 
-              <!-- IMAGE -->
-              <div class="card-img-area">
-                <div class="card-img-bg" id="card-img-bg">
-                  <img id="card-photo" class="card-user-photo" alt="">
-                  <span id="ph-emoji">👤</span>
-                  <div class="card-scanlines"></div>
-                </div>
-              </div>
-
-              <!-- DEX LINE -->
-              <div class="card-dex-strip" id="prev-dex">Festival Pokémon. Length: 5' 6", Weight: 115 lbs.</div>
-
-              <!-- MOVES -->
-              <div class="card-moves-area" id="prev-moves"></div>
-
-              <!-- WEAKNESS / RESISTANCE / RETREAT -->
-              <div class="card-wr" id="prev-wr"></div>
-
-              <!-- FLAVOR TEXT -->
-              <div class="card-flavor-text" id="prev-flavor">"A bright and passionate Trainer who brings happiness, friendship, and good vibes."</div>
-
-              <!-- FOOTER -->
-              <div class="card-footer-bar">
-                <span class="cf-num" id="prev-num">PF2026-007 ★</span>
-                <span class="cf-copy">© Nashville PokéFest 2026</span>
-                <div class="cf-pokefest-badge">
-                  <div class="cf-badge-text">POKÉ<br>FEST</div>
-                  <div class="cf-badge-stars">⭐⭐⭐</div>
-                </div>
-              </div>
-
-            </div>
+            </div><!-- /overlay -->
           </div>
         </div>
 
@@ -820,30 +811,35 @@ textarea.fi{resize:vertical;min-height:60px;line-height:1.55;}
 </div>
 
 <script>
+// SVG icons matching real Pokémon TCG type symbols
+const TYPE_ICONS = {
+  Grass:     {bg:'#5db85a',svg:`<svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#5db85a"/><path d="M10 16c0-4-3-7-6-8 1 3 2 5 6 8zM10 16c0-4 3-7 6-8-1 3-2 5-6 8z" fill="#fff"/><path d="M10 8v8" stroke="#fff" stroke-width="1.2"/></svg>`},
+  Fire:      {bg:'#e8401c',svg:`<svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#e8401c"/><path d="M10 4c0 3-3 4-3 7a3 3 0 006 0c0-1.5-1-2.5-1-4-1 1-1 2-2 2s-1-2 0-5z" fill="#fff"/></svg>`},
+  Water:     {bg:'#4d90d5',svg:`<svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#4d90d5"/><path d="M10 4c-4 4-4 9 0 9s4-5 0-9z" fill="#fff"/></svg>`},
+  Lightning: {bg:'#f0c000',svg:`<svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#f0c000"/><path d="M11 4l-4 7h3l-1 5 5-7h-3l1.5-5z" fill="#1a1a1a"/></svg>`},
+  Psychic:   {bg:'#dd7acc',svg:`<svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#dd7acc"/><circle cx="10" cy="10" r="4" fill="none" stroke="#fff" stroke-width="1.2"/><circle cx="10" cy="10" r="1.5" fill="#fff"/><line x1="10" y1="4" x2="10" y2="6" stroke="#fff" stroke-width="1.2"/><line x1="10" y1="14" x2="10" y2="16" stroke="#fff" stroke-width="1.2"/><line x1="4" y1="10" x2="6" y2="10" stroke="#fff" stroke-width="1.2"/><line x1="14" y1="10" x2="16" y2="10" stroke="#fff" stroke-width="1.2"/></svg>`},
+  Fighting:  {bg:'#c24634',svg:`<svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#c24634"/><circle cx="10" cy="10" r="5.5" fill="none" stroke="#fff" stroke-width="1.2"/><path d="M7 10c0-1.7 1.3-3 3-3s3 1.3 3 3" stroke="#fff" stroke-width="1.2" fill="none"/><line x1="10" y1="10" x2="10" y2="13" stroke="#fff" stroke-width="1.2"/></svg>`},
+  Darkness:  {bg:'#5b5974',svg:`<svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#5b5974"/><circle cx="10" cy="10" r="5" fill="#1a1a2e"/><path d="M10 5a5 5 0 010 10 3 3 0 010-10z" fill="#5b5974"/></svg>`},
+  Metal:     {bg:'#9eb7b8',svg:`<svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#9eb7b8"/><polygon points="10,4 13,8 16,10 13,12 10,16 7,12 4,10 7,8" fill="none" stroke="#fff" stroke-width="1.2"/><circle cx="10" cy="10" r="2" fill="#fff"/></svg>`},
+  Dragon:    {bg:'#0f6ac0',svg:`<svg viewBox="0 0 20 20" fill="none"><defs><linearGradient id="dg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0f6ac0"/><stop offset="100%" stop-color="#f0c000"/></linearGradient></defs><circle cx="10" cy="10" r="10" fill="url(#dg)"/><path d="M10 5l1.5 3.5L15 9l-2.5 2.5.5 3.5L10 13.5l-3 1.5.5-3.5L5 9l3.5-.5z" fill="#fff"/></svg>`},
+  Fairy:     {bg:'#e07aa8',svg:`<svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#e07aa8"/><path d="M10 5l1 3h3l-2.5 2 1 3L10 11.5l-2.5 1.5 1-3L6 8h3z" fill="#fff"/></svg>`},
+  Star:      {bg:'#2a2a2a',svg:`<svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#2a2a2a"/><path d="M10 4l1.5 4.5L16 10l-4.5 1.5L10 16l-1.5-4.5L4 10l4.5-1.5z" fill="#f0c000"/></svg>`},
+  Colorless: {bg:'#c8c8a0',svg:`<svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#c8c8a0"/><path d="M10 5a5 5 0 100 10A5 5 0 0010 5zm0 2a3 3 0 110 6 3 3 0 010-6z" fill="#fff"/></svg>`},
+};
+
 const TYPES=[
-  {name:'Fire',e:'🔥',c:'#ff6b35',bg:'bg-fire'},
-  {name:'Water',e:'💧',c:'#4db8ff',bg:'bg-water'},
-  {name:'Grass',e:'🌿',c:'#5dbb63',bg:'bg-grass'},
-  {name:'Electric',e:'⚡',c:'#ffd700',bg:'bg-electric'},
-  {name:'Psychic',e:'🔮',c:'#ff6eb4',bg:'bg-psychic'},
-  {name:'Dark',e:'🌑',c:'#8b7cf8',bg:'bg-dark'},
-  {name:'Normal',e:'⚪',c:'#b0b090',bg:'bg-normal'},
-  {name:'Fighting',e:'👊',c:'#e05050',bg:'bg-fighting'},
-  {name:'Ice',e:'❄️',c:'#98d8d8',bg:'bg-ice'},
-  {name:'Dragon',e:'🐲',c:'#9060f8',bg:'bg-dragon'},
-  {name:'Fairy',e:'🌸',c:'#ee99ac',bg:'bg-fairy'},
-  {name:'Ghost',e:'👻',c:'#9878c8',bg:'bg-ghost'},
-];
-const STATS=[
-  {n:'HP',id:'s-hp',v:80},{n:'ATK',id:'s-atk',v:90},
-  {n:'DEF',id:'s-def',v:65},{n:'SP.ATK',id:'s-spatk',v:105},
-  {n:'SP.DEF',id:'s-spdef',v:80},{n:'SPD',id:'s-spd',v:90},
-];
-const MOVES_DEF=[
-  {name:'Inspiring Presence',cost:1,dmg:'50₀',desc:'Once during your turn, you may look at the top 5 cards of your deck. Choose 1 Trainer card and put it into your hand. Shuffle the rest.'},
-  {name:'Positive Energy',cost:3,dmg:'60',desc:'Attach up to 2 Basic Energy cards from your discard pile to your Pokémon in any way you like.'},
-  {name:'Friendship Boost',cost:3,dmg:'90',desc:'Search your deck for a Pokémon, reveal it, and put it into your hand. Then, shuffle your deck.'},
-  {name:'Festival Spirit',cost:4,dmg:'120+',desc:'This attack does 30 more damage for each different Pokémon type on your Bench.'},
+  {name:'Grass',     c:'#5db85a', bg:'bg-grass'},
+  {name:'Fire',      c:'#e8401c', bg:'bg-fire'},
+  {name:'Water',     c:'#4d90d5', bg:'bg-water'},
+  {name:'Lightning', c:'#f0c000', bg:'bg-electric'},
+  {name:'Psychic',   c:'#dd7acc', bg:'bg-psychic'},
+  {name:'Fighting',  c:'#c24634', bg:'bg-fighting'},
+  {name:'Darkness',  c:'#5b5974', bg:'bg-dark'},
+  {name:'Metal',     c:'#9eb7b8', bg:'bg-normal'},
+  {name:'Dragon',    c:'#0f6ac0', bg:'bg-dragon'},
+  {name:'Fairy',     c:'#e07aa8', bg:'bg-fairy'},
+  {name:'Star',      c:'#f0c000', bg:'bg-electric'},
+  {name:'Colorless', c:'#c8c8a0', bg:'bg-normal'},
 ];
 const BACK_IMGS=['images/card-back-gold.png','images/card-back-classic.png'];
 const BACK_NAMES=['Gold Edition','Classic Edition'];
@@ -866,7 +862,6 @@ function selBundle(id){
   S.bundlePrice=BUNDLE_DATA[id].price;
   document.querySelectorAll('.bundle-card').forEach(b=>b.classList.remove('selected'));
   document.getElementById('bun-'+id).classList.add('selected');
-  // If VIP or keychain bundle selected, disable the standalone keychain add-on to avoid double-charging
   const keychainInBundle=(id==='keychain'||id==='vip');
   const addonKeychainRow=document.getElementById('addon-keychain');
   if(keychainInBundle){
@@ -891,72 +886,25 @@ function toggleAddon(key,price){
   updSummary();
 }
 
-// BUILD TYPE GRID
+// BUILD TYPE GRID with SVG icons
 (function(){
-  const g=document.getElementById('type-grid');
+  const gr=document.getElementById('type-grid');
   TYPES.forEach(t=>{
+    const icon=TYPE_ICONS[t.name];
     const b=document.createElement('div');
     b.className='type-btn'+(t.name===S.type?' selected':'');
     if(t.name===S.type)b.style.borderColor=t.c;
-    b.innerHTML=`<span class="tbe">${t.e}</span><span class="tbn" style="color:${t.c}">${t.name}</span>`;
+    b.innerHTML=`<div class="type-icon" style="background:${icon.bg};">${icon.svg}</div><span class="tbn" style="color:${t.c}">${t.name}</span>`;
     b.onclick=()=>{
       S.type=t.name;
       document.querySelectorAll('.type-btn').forEach(x=>{x.classList.remove('selected');x.style.borderColor='';});
       b.classList.add('selected');b.style.borderColor=t.c;up();
     };
-    g.appendChild(b);
+    gr.appendChild(b);
   });
 })();
 
-// BUILD STATS
-(function(){
-  const w=document.getElementById('stat-rows');
-  STATS.forEach(s=>{
-    w.innerHTML+=`<div class="stat-row">
-      <span class="sn">${s.n}</span>
-      <input class="slider" type="range" id="${s.id}" min="1" max="150" value="${s.v}"
-        oninput="document.getElementById('${s.id}-v').textContent=this.value;updStatTotal();up()">
-      <span class="sv" id="${s.id}-v">${s.v}</span>
-    </div>`;
-  });
-})();
-
-function updStatTotal(){
-  const t=STATS.reduce((sum,s)=>sum+(parseInt(g(s.id))||0),0);
-  document.getElementById('stat-total').textContent=t;
-}
-
-// BUILD MOVES
-(function(){
-  const w=document.getElementById('moves-section');
-  for(let i=0;i<4;i++){
-    const m=MOVES_DEF[i]||{name:'',cost:2,dmg:'',desc:''};
-    const lbl=i===0?'Ability / Move 1':`Move ${i+1}${i>0?' (optional)':''}`;
-    w.innerHTML+=`
-    <div class="smini" style="margin-top:${i>0?'1rem':'0'}">${lbl}</div>
-    <div class="field-group"><label class="field-label">Name</label>
-      <input class="fi" id="m${i}-name" type="text" maxlength="24" value="${m.name}" oninput="up()">
-    </div>
-    <div class="move-grid">
-      <div class="field-group" style="margin:0"><label class="field-label">Energy Cost</label>
-        <select class="fi" id="m${i}-cost" onchange="up()">
-          <option value="1"${m.cost===1?' selected':''}>⚡ 1</option>
-          <option value="2"${m.cost===2?' selected':''}>⚡⚡ 2</option>
-          <option value="3"${m.cost===3?' selected':''}>⚡⚡⚡ 3</option>
-          <option value="4"${m.cost===4?' selected':''}>⚡⚡⚡⚡ 4</option>
-        </select>
-      </div>
-      <div class="field-group" style="margin:0"><label class="field-label">Damage</label>
-        <input class="fi" id="m${i}-dmg" type="text" maxlength="6" value="${m.dmg}" placeholder="e.g. 60" oninput="up()">
-      </div>
-    </div>
-    <div class="field-group"><label class="field-label">Description</label>
-      <input class="fi" id="m${i}-desc" type="text" maxlength="120" value="${m.desc}" oninput="up()">
-    </div>`;
-  }
-})();
-
-// SPARKLES — gold/white dots like the real card's glitter
+// SPARKLES
 (function(){
   const w=document.getElementById('sparkles-wrap');
   const colors=['#fff','#ffd700','#ffaa00','#fff8dc','#ffeaa0'];
@@ -983,7 +931,10 @@ function selBack(idx){
 function selPay(btn,m){
   document.querySelectorAll('.pay-btn').forEach(b=>b.classList.remove('selected'));
   btn.classList.add('selected');
-  ['card','cash','venmo'].forEach(k=>document.getElementById('fields-'+k).style.display=k===m?'block':'none');
+  // card fields always hidden (not ready yet)
+  document.getElementById('fields-card').style.display='none';
+  document.getElementById('fields-cash').style.display=m==='cash'?'block':'none';
+  document.getElementById('fields-venmo').style.display=m==='venmo'?'block':'none';
 }
 function selNotify(btn,m){
   document.querySelectorAll('.notify-btn').forEach(b=>b.classList.remove('selected'));
@@ -1006,93 +957,108 @@ function handlePhoto(inp){
   r.readAsDataURL(inp.files[0]);
 }
 
-// MAIN UPDATE
+// MAIN UPDATE — drives overlay text on the template image
 function up(){
   const t=TYPES.find(x=>x.name===S.type)||TYPES[0];
-
-  // card background
-  document.getElementById('card-bg').className='card-bg-shell bg-'+t.name.toLowerCase();
+  const icon=TYPE_ICONS[t.name]||TYPE_ICONS['Fire'];
 
   // holo / gold overlays
-  document.getElementById('card-holo').style.opacity=S.finish==='holo'?'0.85':'0';
-  document.getElementById('card-gold-shimmer').style.opacity=S.finish==='gold'?'0.9':'0';
+  document.getElementById('card-holo').style.opacity=S.finish==='holo'?'0.6':'0';
+  document.getElementById('card-gold-shimmer').style.opacity=S.finish==='gold'?'0.7':'0';
 
-  // text fields
-  document.getElementById('prev-name').textContent=g('card-name')||'Trainer Name';
-  document.getElementById('prev-hp').innerHTML=`<span class="hp-sup">HP</span>${g('card-hp')||'150'}`;
-  document.getElementById('prev-stage').textContent=(g('card-stage')||'Stage Legend').toUpperCase();
-  document.getElementById('prev-subtitle').textContent=g('card-subtitle')||'Festival Trainer';
-  document.getElementById('prev-dex').textContent=g('card-dex')||"Festival Pokémon. Length: 5' 6\", Weight: 115 lbs.";
-  document.getElementById('prev-flavor').textContent=g('card-flavor')||'"A bright and passionate Trainer who brings happiness, friendship, and good vibes."';
-  document.getElementById('prev-num').textContent=(g('card-number')||'PF2026-007')+' ★';
+  // NAME
+  const nameEl=document.getElementById('prev-name');
+  if(nameEl) nameEl.textContent=g('card-name')||'Name here';
 
-  // type pills
-  const tp=document.getElementById('prev-type-pill');
-  tp.textContent=`${t.e} ${t.name}`;
-  tp.style.background=hRgba(t.c,0.18);tp.style.color=t.c;
-  const sub=g('card-subtype');
-  const sp=document.getElementById('prev-sub-pill');
-  if(sub){
-    const st=TYPES.find(x=>x.name===sub);
-    sp.style.display='inline';sp.textContent=`${st?.e||''} ${sub}`;
-    sp.style.background=hRgba(st?.c||'#888',0.18);sp.style.color=st?.c||'#888';
-  }else{sp.style.display='none';}
+  // SUBTITLE
+  const subEl=document.getElementById('prev-subtitle');
+  if(subEl) subEl.textContent='Trainer';
 
-  // MOVES — real card layout
-  const mw=document.getElementById('prev-moves');mw.innerHTML='';
-  for(let i=0;i<4;i++){
-    const mn=g(`m${i}-name`);if(!mn)continue;
-    const mc=parseInt(g(`m${i}-cost`))||2;
-    const md=g(`m${i}-dmg`)||'';
-    const mdesc=g(`m${i}-desc`)||'';
-    let energyHTML='';
-    if(i===0){
-      energyHTML=`<div class="cm-tn-badge">⭐</div>`;
-    } else {
-      const filled=Array(Math.max(mc-1,0)).fill(`<div class="energy-dot" style="background:radial-gradient(circle at 38% 35%,${t.c}cc,${t.c}66);border-color:rgba(0,0,0,0.4);"></div>`).join('');
-      const colorless=`<div class="energy-dot colorless"></div>`;
-      energyHTML=filled+(mc>0?colorless:'');
-    }
-    mw.innerHTML+=`<div class="card-move">
-      <div class="cm-top">
-        <div class="cm-left"><div class="cm-energy">${energyHTML}</div><span class="cm-name" style="color:${t.c}">${mn}</span></div>
-        <span class="cm-dmg">${md}</span>
-      </div>${mdesc?`<div class="cm-desc">${mdesc}</div>`:''}
-    </div>`;
+  // PHOTO
+  const photoEl=document.getElementById('card-photo');
+  const emojiEl=document.getElementById('ph-emoji');
+  if(photoEl && photoEl.src && photoEl.src!==window.location.href){
+    photoEl.style.display='block';
+    if(emojiEl) emojiEl.style.display='none';
   }
 
-  // WEAKNESS / RESISTANCE / RETREAT — real card layout
-  const wt=g('weak-type'),wm=g('weak-mult')||'×2';
-  const rt=g('res-type'),ra=g('res-amt')||'-30';
-  const ret=parseInt(g('retreat'))||3;
-  const retDots=Array(ret).fill(`<span class="retreat-dot"></span>`).join('');
-  document.getElementById('prev-wr').innerHTML=`
-    <div class="wr-item"><span class="wr-label">weakness</span><span class="wr-val"><span class="wr-etype">${wt||'—'}</span>${wt?' '+wm:''}</span></div>
-    <div class="wr-item"><span class="wr-label">resistance</span><span class="wr-val"><span class="wr-etype">${rt||'—'}</span>${rt?' '+ra:''}</span></div>
-    <div class="wr-item"><span class="wr-label">retreat cost</span><span class="wr-val">${ret?retDots:'Free'}</span></div>`;
+  // ABILITY NAME
+  const abilityEl=document.getElementById('prev-ability-name');
+  if(abilityEl) abilityEl.textContent=g('ability-name')||'Ability Name';
 
-  // price display
+  // ATTACK NAME + type icon dot
+  const attackEl=document.getElementById('prev-attack-name');
+  if(attackEl) attackEl.textContent=g('attack-name')||'Move Name';
+  const moveIconEl=document.getElementById('prev-move-icon');
+  if(moveIconEl) moveIconEl.style.background=icon.bg;
+
+  // WEAKNESS
+  const wt=g('weak-type'),wm=g('weak-mult')||'×2';
+  const weakIcon=document.getElementById('prev-weak-icon');
+  const weakVal=document.getElementById('prev-weak-val');
+  if(wt&&TYPE_ICONS[wt]){
+    if(weakIcon) weakIcon.style.background=TYPE_ICONS[wt].bg;
+    if(weakVal) weakVal.textContent=wm;
+  } else {
+    if(weakIcon) weakIcon.style.background='#ccc';
+    if(weakVal) weakVal.textContent='—';
+  }
+
+  // RESISTANCE
+  const rt=g('res-type'),ra=g('res-amt')||'-30';
+  const resIcon=document.getElementById('prev-res-icon');
+  const resVal=document.getElementById('prev-res-val');
+  if(rt&&TYPE_ICONS[rt]){
+    if(resIcon) resIcon.style.background=TYPE_ICONS[rt].bg;
+    if(resVal) resVal.textContent=ra;
+  } else {
+    if(resIcon) resIcon.style.background='#ccc';
+    if(resVal) resVal.textContent='—';
+  }
+
+  // RETREAT DOTS
+  const ret=parseInt(g('retreat'))||3;
+  const retreatEl=document.getElementById('prev-retreat-dots');
+  if(retreatEl){
+    retreatEl.innerHTML=ret>0
+      ? Array(ret).fill(`<div style="width:10px;height:10px;border-radius:50%;background:radial-gradient(circle at 38% 35%,#e0e0e0,#888);border:1px solid rgba(0,0,0,0.3);flex-shrink:0;"></div>`).join('')
+      : '<span style="font-size:0.45rem;color:#555;">Free</span>';
+  }
+
+  // EX RULE
+  const exEl=document.getElementById('prev-ex-rule');
+  if(exEl) exEl.textContent=g('ex-rule')||'When your Pokémon ex is Knocked Out, your opponents gets 2 Points.';
+
+  // PRICE + TAGS
   const total=calcTotal();
   document.getElementById('prev-price').textContent=`$${total.toFixed(2)}`;
   document.getElementById('sum-total').textContent=`$${total.toFixed(2)}`;
   document.getElementById('cash-amt').textContent=`$${total.toFixed(2)}`;
   document.getElementById('venmo-amt').textContent=`$${total.toFixed(2)}`;
-  document.getElementById('sum-finish-cost').textContent=S.finishCost>0?`+$${S.finishCost.toFixed(2)}`:'—';
+  if(document.getElementById('sum-finish-cost'))
+    document.getElementById('sum-finish-cost').textContent=S.finishCost>0?`+$${S.finishCost.toFixed(2)}`:'—';
 
   // tags
-  document.getElementById('ptag-type').textContent=`${t.e} ${t.name}`;
-  document.getElementById('ptag-type').classList.add('on');
-  document.getElementById('ptag-finish').textContent=S.finish==='holo'?'✨ Holo':S.finish==='gold'?'🥇 Gold':'Standard';
-  document.getElementById('ptag-finish').classList.toggle('on',S.finish!=='standard');
+  const typeTagEl=document.getElementById('ptag-type');
+  if(typeTagEl){typeTagEl.textContent=t.name;typeTagEl.classList.add('on');}
+  const finishTagEl=document.getElementById('ptag-finish');
+  if(finishTagEl){
+    finishTagEl.textContent=S.finish==='holo'?'✨ Holo':S.finish==='gold'?'🥇 Gold':'Standard';
+    finishTagEl.classList.toggle('on',S.finish!=='standard');
+  }
   const bShort={'card-only':'Card Only','keychain':'🔑 Keychain Bundle','case':'🛡️ Case Bundle','vip':'👑 VIP Bundle'};
-  document.getElementById('ptag-qty').textContent=bShort[S.bundle]||'Card Only';
-  document.getElementById('ptag-qty').classList.add('on');
+  const qtyTagEl=document.getElementById('ptag-qty');
+  if(qtyTagEl){qtyTagEl.textContent=bShort[S.bundle]||'Card Only';qtyTagEl.classList.add('on');}
 
-  // summary
-  document.getElementById('sum-name').textContent=g('card-name')||'—';
-  document.getElementById('sum-type').textContent=S.type;
-  document.getElementById('sum-finish').textContent=S.finish==='holo'?'Holographic (+$5)':S.finish==='gold'?'Gold Foil (+$8)':'Standard Gloss';
+  // summary panel
+  const sumNameEl=document.getElementById('sum-name');
+  if(sumNameEl) sumNameEl.textContent=g('card-name')||'—';
+  const sumTypeEl=document.getElementById('sum-type');
+  if(sumTypeEl) sumTypeEl.textContent=S.type;
+  const sumFinishEl=document.getElementById('sum-finish');
+  if(sumFinishEl) sumFinishEl.textContent=S.finish==='holo'?'Holographic (+$5)':S.finish==='gold'?'Gold Foil (+$8)':'Standard Gloss';
 }
+
 
 function updSummary(){
   const bundleName=BUNDLE_DATA[S.bundle]?.name||'Card Only';
@@ -1141,7 +1107,63 @@ function flipCard(){
 
 function submitOrder(){
   if(!document.getElementById('consent').checked){alert('Please agree to the terms to place your order.');return;}
+
+  // Generate order number
   const num='PF-'+Math.floor(1000+Math.random()*8999);
+
+  // Collect all form data
+  const orderData = {
+    firstName:    g('fname')||'',
+    lastName:     g('lname')||'',
+    phone:        g('phone')||'',
+    email:        g('email')||'',
+    notify:       S.notify==='text'?'Text':S.notify==='email'?'Email':'Both',
+    cardName:     g('card-name')||'',
+    abilityName:  g('ability-name')||'',
+    hp:           g('card-hp')||'150',
+    attackName:   g('attack-name')||'',
+    weakness:     (g('weak-type')||'None')+' '+(g('weak-mult')||''),
+    resistance:   (g('res-type')||'None')+' '+(g('res-amt')||''),
+    retreat:      g('retreat')||'3',
+    exRule:       g('ex-rule')||'',
+    cardType:     S.type,
+    cardFinish:   S.finish==='holo'?'Holographic (+$5)':S.finish==='gold'?'Gold Foil (+$8)':'Standard Gloss',
+    cardBack:     S.back===0?'Gold Edition':'Classic Edition',
+    bundle:       BUNDLE_DATA[S.bundle]?.name||'Card Only',
+    addons:       [S.addons.print?'Extra Print (+$10)':'',S.addons.keychain?'Keychain Only (+$30)':''].filter(Boolean).join(', ')||'None',
+    cardNumber:   g('card-number')||'',
+    special:      g('special')||'',
+    total:        '$'+calcTotal().toFixed(2)+' — Order #'+num,
+  };
+
+  // Submit to Google Forms in background using no-cors fetch
+  // Google Forms submission endpoint
+  const FORM_ID = '1FAIpQLSc4yuz1WiCin5cFqbu8VP9UCyNHdPH4R8a20M5ONeBRXCmQrw';
+  const formUrl = `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`;
+
+  // Build form data with real Google Form entry IDs
+  const formData = new FormData();
+  formData.append('entry.150075180',  orderData.firstName);
+  formData.append('entry.697873590',  orderData.lastName);
+  formData.append('entry.1745107478', orderData.phone);
+  formData.append('entry.741068407',  orderData.email);
+  formData.append('entry.262393890',  orderData.notify);
+  formData.append('entry.2036868169', orderData.cardName);
+  formData.append('entry.1457697649', orderData.abilityName+' | HP: '+orderData.hp+' | Attack: '+orderData.attackName);
+  formData.append('entry.2098121304', orderData.cardType);
+  formData.append('entry.877418219',  orderData.cardFinish);
+  formData.append('entry.641055907',  orderData.cardBack);
+  formData.append('entry.1809076230', orderData.bundle);
+  formData.append('entry.1034383485', orderData.addons);
+  formData.append('entry.31956535',   orderData.cardNumber);
+  formData.append('entry.1096424689', 'Weakness: '+orderData.weakness+' | Resistance: '+orderData.resistance+' | Retreat: '+orderData.retreat+' | EX Rule: '+orderData.exRule+(orderData.special?' | Notes: '+orderData.special:''));
+  formData.append('entry.1938198347', orderData.total);
+
+  // Send in background — no-cors means we won't get a response back but it submits
+  fetch(formUrl, {method:'POST', mode:'no-cors', body:formData})
+    .catch(()=>{}); // silent fail — don't block success screen
+
+  // Show success screen regardless
   document.getElementById('suc-num').textContent=`ORDER #${num}`;
   const ph=g('phone'),em=g('email');
   let notifyStr='';
@@ -1160,7 +1182,7 @@ function fmtCard(inp){
   inp.value=v.replace(/(.{4})/g,'$1 ').trim();
 }
 
-up();updStatTotal();updSummary();
+up();updSummary();
 </script>
 </body>
 </html>
